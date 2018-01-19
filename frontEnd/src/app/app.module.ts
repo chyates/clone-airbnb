@@ -1,0 +1,35 @@
+// Module imports
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+// Component imports
+import { AppComponent } from './app.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ListingComponent } from './listing/listing.component';
+import { UserDashComponent } from './user-dash/user-dash.component';
+
+// Service imports
+import { LocalApiService } from './local-api.service';
+import { ListingInfoComponent } from './listing-info/listing-info.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LandingPageComponent,
+    ListingComponent,
+    UserDashComponent,
+    ListingInfoComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpModule
+  ],
+  providers: [LocalApiService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
