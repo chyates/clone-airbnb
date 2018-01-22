@@ -1,3 +1,84 @@
-<p>
-  listing-info works!
-</p>
+<div class="listing-header">
+    <img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
+    <form id="top-search">
+      <input type="text" name="search" placeholder="Search">
+      <input id="search-submit" type="submit" value="search">
+    </form>
+    <p id="quick-links"><a [routerLink]="['/account']">{{ currentUser.firstName }}'s Account</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
+  </div>
+
+  <div class="container">
+    <img id="listing-photo" src="{{thisListing.image}}">
+
+    <div id="main-info">
+      <div id="main-content-listing">
+        <p><a>Overview</a> &#9679; <a>Reviews</a> &#9679; <a>Location</a></p>
+        <h2>Title: {{ thisListing.title }}</h2>
+        <p>{{ thisListing.description }}</p>
+        <hr>
+        <div *ngFor="let r of allReviews; let idx=index">
+          <h3>Reviews:</h3>
+          <h3>{{ r.title }}</h3>
+          <p>"{{ r.content }}"</p>
+          <a id="review-add" (click)="toggleReview()">Add Review</a>
+        </div>
+        <hr>
+        <h3>Location: </h3>
+        <p>{{ thisListing.location }}</p>
+      </div>
+      <div id="listings-instant-book">
+        <h3>{{ thisListing.price | currency:'USD':true }}/night</h3>
+        <hr>
+        <form class="instant-book-form" (submit)="bookTrip()">
+          <div id="check-in">
+            <span>Check in:</span><br><input type="date" 
+            name="startDate"
+            required
+            [(ngModel)]="reservation.startDate"
+            #startDate = "ngModel" 
+            placeholder="mm/dd/yyyy"><br>
+          </div>
+
+          <div id="check-out">
+            <span>Check out:</span><br><input type="date" 
+            name="endDate"
+            required
+            [(ngModel)]="reservation.endDate"
+            #endDate = "ngModel"
+            placeholder="mm/dd/yyyy"><br>
+          </div><br><br>
+
+          <div id="guest-select">
+            Guests: <br><select id="guest-number" 
+            name="amtGuests"
+            required
+            [(ngModel)]="reservation.amtGuests"
+            #amtGuests = "ngModel">
+              <option value="1">1 guest</option>
+              <option value="2">2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+            </select>
+          </div> <br>
+          <input id="form-submit" type="submit" value="Book">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="addReview === true">
+    <form (submit)="createReview()">
+      Title: <input type="text"
+      name="title"
+      required
+      [(ngModel)]="review.title"
+      #title = "ngModel"><br><br>
+      Content: <br><textarea cols="40" rows="7"
+      name="content"
+      required
+      [(ngModel)]="review.content"
+      #content = "ngModel"
+      placeholder="How was your experience?"></textarea><br><br>
+      <input type="submit" value="Leave review">
+    </form>
+  </div>

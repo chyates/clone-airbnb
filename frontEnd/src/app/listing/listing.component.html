@@ -1,3 +1,38 @@
-<p>
-  listing works!
-</p>
+<nav id="inside-navbar-top" class="navbar navbar-expand-lg navbar-light">
+    <a [routerLink]="['/']"><img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg"></a>
+    <form id="top-search" #searchForm="ngForm" (submit)="searchByLocation()">
+      <input type="text" name="location" required [(ngModel)]="listing.location" #location="ngModel" placeholder="Search">
+      <input id="search-submit" type="submit">
+    </form>
+    <p id="quick-links">
+      <a [routerLink]="['/account']">{{ currentUser.firstName }}'s Account</a> |
+      <a [routerLink]="['/listings']">Listings</a> |
+      <a>Log Out</a>
+    </p>
+  </nav>
+  
+  <div id="listing-container" class="container-fluid">
+    <div class="row">
+      <h2>Most recent listings</h2>
+    </div>
+    <div class="home-row row">
+      <div id="recent-listings" class="col-md" *ngFor="let l of recentListings">
+        <img class="img img-fluid img-thumbnail" id="recent-result-image" src="{{ l.image }}">
+        <h4><a [routerLink]="[l._id]">{{ l.title }}</a></h4>
+        <li>{{ l.price | currency:'USD':true }}</li>
+        <li>{{ l.roomType }}</li>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <h2>Search listings by city</h2>
+    </div>
+    <div class="home-row row">
+      <div id="search-results" class="col-md" *ngFor="let result of searchListings">
+        <img class="img img-fluid img-thumbnail" id="search-result-image" src="{{ result.image }}">
+        <h4><a [routerLink]="[result._id]">{{ result.title }}</a></h4>
+        <li>{{ result.price | currency:'USD':true }}</li>
+        <li>{{ result.roomType }}</li>
+      </div>
+    </div>
+  </div>

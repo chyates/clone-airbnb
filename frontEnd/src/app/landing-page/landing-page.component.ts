@@ -5,7 +5,6 @@ import { LogUser } from '../log-user';
 import { Listing } from '../listing';
 import { LocalApiService } from '../local-api.service';
 
-
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',

@@ -4,6 +4,11 @@
     padding: 10%;
 }
 
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+}
+
 .modal-title {
     font-weight: bold;
     font-size: 24px;
@@ -107,9 +112,9 @@
     border-color: #2d92a9;
 }
 
-.modal-backdrop fade in { 
+/* .modal-backdrop fade in { 
     display: none;
-}
+} */
 
 /* navbar CSS */
 #header-logo {
