@@ -9,7 +9,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, '/frontend/dist')));
+app.use(express.static(path.join(__dirname, '/frontEnd/dist')));
 app.use(session({
     secret: 'secretsecretsecret!',
     resave: true,
