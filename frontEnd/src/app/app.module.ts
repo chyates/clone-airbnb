@@ -14,6 +14,11 @@ import { UserDashComponent } from './user-dash/user-dash.component';
 // Service imports
 import { LocalApiService } from './local-api.service';
 import { ListingInfoComponent } from './listing-info/listing-info.component';
+import { DashProfileComponent } from './dash-profile/dash-profile.component';
+import { DashListingsComponent } from './dash-listings/dash-listings.component';
+import { DashReservesComponent } from './dash-reserves/dash-reserves.component';
+import { DashMessagesComponent } from './dash-messages/dash-messages.component';
+import { HostComponent } from './host/host.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,12 @@ import { ListingInfoComponent } from './listing-info/listing-info.component';
     LandingPageComponent,
     ListingComponent,
     UserDashComponent,
-    ListingInfoComponent
+    ListingInfoComponent,
+    DashProfileComponent,
+    DashListingsComponent,
+    DashReservesComponent,
+    DashMessagesComponent,
+    HostComponent
   ],
   imports: [
     BrowserModule,

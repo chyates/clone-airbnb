@@ -19,24 +19,21 @@
     margin: 0;
     border: 0;
 }
-
-#top-search {
-    display: inline-block;
-    vertical-align: bottom;
-    margin: 15px;
+#listings-nav {
+    font-size: 16px;
+    /* font-weight: bold; */
 }
+
+#listings-nav ul li a {
+    color: var(--navy);
+}
+
 #search-submit {
     color: white;
     background-color: white;
     border: none;
 }
-#quick-links {
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 650px;
-    margin-top: 10px;
-    font-size: 14pt;
-}
+
 .container {
     display: inline-block;
     vertical-align: top;

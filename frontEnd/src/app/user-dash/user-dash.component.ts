@@ -17,10 +17,10 @@ export class UserDashComponent implements OnInit {
     private _router: Router
   ) { }
 
-  profile = true;
-  listingDiv;
-  trips;
-  addListing;
+  viewProfile = true;
+  viewReserves = false;
+  viewListings = false;
+  viewMessages = false;
 
   location;
   listing = new Listing();
@@ -38,41 +38,41 @@ export class UserDashComponent implements OnInit {
     this.getUserReserves();
   }
   
-  switchListingDiv(){
-    this.listingDiv = true;
-    this.profile = false;
-    this.trips = false;
-    this.addListing = false;
+  switchListing(){
+    this.viewListings = true;
+    this.viewProfile = false;
+    this.viewReserves = false;
+    this.viewMessages = false;
   }
 
-  switchTrips(){
-    this.trips = true;
-    this.profile = false;
-    this.listingDiv = false;
-    this.addListing = false;
+  switchReserves(){
+    this.viewReserves = true;
+    this.viewProfile = false;
+    this.viewListings = false;
+    this.viewMessages = false;
   }
 
   switchProfile(){
-    if (this.profile === false){
-      this.profile = true;
-      this.listingDiv = false;
-      this.trips = false;
-      this.addListing = false;
+    if (this.viewProfile === false){
+      this.viewProfile = true;
+      this.viewListings = false;
+      this.viewReserves = false;
+      this.viewMessages = false;
     }
   }
 
-  switchAddListingDiv(){
-    this.addListing = true;
-    this.profile = false;
-    this.listingDiv = false;
-    this.trips = false;
+  switchMessages(){
+    this.viewMessages = true;
+    this.viewProfile = false;
+    this.viewListings = false;
+    this.viewReserves = false;
   }
 
   createListing(){
     return this._localService.createListing(this.listing)
     .then(data => {
       this.listings = data.listings;
-      this.switchListingDiv();
+      // this.switchviewListings();
     })
   }
 

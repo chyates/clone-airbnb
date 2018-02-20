@@ -1,142 +1,151 @@
-<div class="listing-header">
-  <img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
-  <form id="top-search" #searchForm="ngForm" (submit)="searchByLocation()">
-    <input type="text"
-    name="location"
-    required
-    [(ngModel)]="listing.location"
-    #location = "ngModel"
-    placeholder="Search">
-    <input id="search-submit" type="submit" >
-  </form>
-  <p id="quick-links"><a [routerLink]="['/account']">{{ currentUser.firstName }}'s Account</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
+<nav id="user-dash-top-nav" class="navbar navbar-toggleable navbar-light">
+  <div class="justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="col">
+      <a class="navbar-brand" href="#">
+        <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
+      </a>
+    </div>
+    <div id="nav-form-search" class="col-9">
+      <form class="align-middle form-inline">
+        <div class="form-row">
+          <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Try 'San Francisco'">
+          <button id="home-landing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-2">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/account']">Kevin's Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/listings']">Listings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<hr>
+<div id="" class="container container-fluid">
+  <div class="row">
+
+    <div class="col-sm">
+      <nav id="inside-nav" class="navbar navbar-toggleable navbar-light">
+        <div class="nav flex-column">
+            <button (click)="switchListing()" type="button" id="toggle-listings" class="inner-nav btn btn-rounded btn-outline-primary">Your Listings</button>
+            <button (click)="switchMessages()" type="button" id="toggle-messages" class="inner-nav btn btn-rounded btn-outline-primary">Messages</button>
+            <button (click)="switchProfile()" type="button" id="toggle-profile" class="inner-nav btn btn-rounded btn-outline-primary">Profile Settings</button>
+            <button (click)="switchReserves()" type="button" id="toggle-reserves" class="inner-nav btn btn-rounded btn-outline-primary">Your Reservations</button>
+        </div>
+      </nav>
+    </div>
+    <div class="col-md">
+      <app-dash-listings *ngIf="viewListings"></app-dash-listings>
+      <app-dash-messages *ngIf="viewMessages"></app-dash-messages>
+      <app-dash-profile *ngIf="viewProfile"></app-dash-profile>
+      <app-dash-reserves *ngIf="viewReserves"></app-dash-reserves>
+    </div>
+  </div>
 </div>
 
-  <div class="user-dash-nav">
-    <button (click)="switchInbox()" id="nav-button-first">Inbox</button>
-    <button (click)="switchTrips()">Your Trips</button>
-    <button (click)="switchListingDiv()">Your Listings</button>
-    <button (click)="switchProfile()">Profile</button>
-    <button (click)="switchInbox()">Settings</button>
-  </div>
-  
-  <div id="inner-content">
-    <div id="inner-nav">
-      <a (click)="switchAddListingDiv()"class="inner-link">Add Listing</a>
-      <a class="inner-link">Past Trips</a>
-      <a class="inner-link">Upcoming Trips</a>
-      <a class="inner-link">Invite Friends</a>
-    </div>
-      
-    <div *ngIf="profile === true" class="form-edit">
-      <h3>Edit Profile</h3>
-      <h4>Required Information:</h4>
-      <hr>
-      <form >
-        First Name: <input type="text" name="firstName" placeholder="Update your first name"><br><br>
-        Last Name: <input type="text" name="lastName" placeholder="Update your last name"><br><br>
-        Email: <input type="email" name="firstName" placeholder="Update your email"><br><br>
-        Password: <input type="password" name="firstName" placeholder="Update your password"><br><br>
-        Confirm new password: <input type="password" name="firstName" placeholder="Confirm updated password"><br><br>
-        Phone number: <input type="tel" name="firstName" placeholder="Update your phone number"><br><br>
-        <input type="submit" value="Save">
-      </form>
-    </div>
-  
-    <div *ngIf="addListing === true" class="form-edit">
-      <h3>Add Listing</h3>
-      <hr>
-      <form (submit)="createListing()">
-        Name: <input type="text"
-        name="title"
-        required
-        [(ngModel)]="listing.title"
-        #title = "ngModel"
-        placeholder="Enter a title"><br><br>
-        Description: <br><textarea cols="50" rows="7"
-        name="description"
-        required
-        [(ngModel)]="listing.description"
-        #description = "ngModel"
-        placeholder="Maximum 250 characters"></textarea><br><br>
-        Room type (house, apt, private): <input type="text"
-        name="roomType"required
-        [(ngModel)]="listing.roomType"
-        #roomType = "ngModel"
-        placeholder="House? Private room?"><br><br>
-        Number of beds: <select
-        name="amountBeds"
-        required
-        [(ngModel)]="listing.amountBeds"
-        #amountBeds = "ngModel">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select><br><br>
-        Price: $<input type="number"
-        name="price"
-        required
-        [(ngModel)]="listing.price"
-        #price = "ngModel"><br><br>
-        Location: <input type="text"
-        name="location"
-        required
-        [(ngModel)]="listing.location"
-        #location = "ngModel"
-        placeholder="Enter location"><br><br>
-        Image URL: <input type="text" 
-        name="image"
-        [(ngModel)] = "listing.image"
-        #image = "ngModel"
-        placeholder="Enter image URL"><br><br>
-        <input type="submit" value="Create Listing">
-      </form>
-    </div>
+<!-- 
+</div>
 
-    <div *ngIf="listingDiv === true" class="form-edit">
-      <h3>Listings You've Posted</h3>
-      <hr>
-      <table class="table table-responsive">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Location</th>
-            <th>Reservations</th>
-            <th>Reviews</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of listings">
-            <td>{{ item.title }}</td>
-            <td>{{ item.location }}</td>
-            <td>{{ item.reservations }}</td>
-            <td>{{ item.reviews }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div *ngIf="addListing === true" class="form-edit">
+<h3>Add Listing</h3>
+<hr>
+<form (submit)="createListing()">
+  Name: <input type="text"
+  name="title"
+  required
+  [(ngModel)]="listing.title"
+  #title = "ngModel"
+  placeholder="Enter a title"><br><br>
+  Description: <br><textarea cols="50" rows="7"
+  name="description"
+  required
+  [(ngModel)]="listing.description"
+  #description = "ngModel"
+  placeholder="Maximum 250 characters"></textarea><br><br>
+  Room type (house, apt, private): <input type="text"
+  name="roomType"required
+  [(ngModel)]="listing.roomType"
+  #roomType = "ngModel"
+  placeholder="House? Private room?"><br><br>
+  Number of beds: <select
+  name="amountBeds"
+  required
+  [(ngModel)]="listing.amountBeds"
+  #amountBeds = "ngModel">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select><br><br>
+  Price: $<input type="number"
+  name="price"
+  required
+  [(ngModel)]="listing.price"
+  #price = "ngModel"><br><br>
+  Location: <input type="text"
+  name="location"
+  required
+  [(ngModel)]="listing.location"
+  #location = "ngModel"
+  placeholder="Enter location"><br><br>
+  Image URL: <input type="text" 
+  name="image"
+  [(ngModel)] = "listing.image"
+  #image = "ngModel"
+  placeholder="Enter image URL"><br><br>
+  <input type="submit" value="Create Listing">
+</form>
+</div>
 
-    <div *ngIf="trips === true" class="form-edit">
-      <h3>Trips You've Booked</h3>
-      <hr>
-      <table class="table table-responsive">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Number of Guests</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of reservations">
-              <td>{{ item._listing.title }}</td>
-              <td>{{ item.startDate | date: 'mediumDate' }}</td>
-              <td>{{ item.endDate | date: 'mediumDate' }}</td>
-              <td>{{ item.amtGuests }}</td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-  </div>
+<div *ngIf="listingDiv === true" class="form-edit">
+<h3>Listings You've Posted</h3>
+<hr>
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Reservations</th>
+      <th>Reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listings">
+      <td>{{ item.title }}</td>
+      <td>{{ item.location }}</td>
+      <td>{{ item.reservations }}</td>
+      <td>{{ item.reviews }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div *ngIf="trips === true" class="form-edit">
+<h3>Trips You've Booked</h3>
+<hr>
+<table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Number of Guests</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of reservations">
+        <td>{{ item._listing.title }}</td>
+        <td>{{ item.startDate | date: 'mediumDate' }}</td>
+        <td>{{ item.endDate | date: 'mediumDate' }}</td>
+        <td>{{ item.amtGuests }}</td>
+      </tr>
+    </tbody>
+  </table> -->

@@ -112,10 +112,10 @@
     border-color: var(--navy);
 }
 
-.navbar-color {
-    background-color:#3D9DB3;
+.navbar {
+    background-color:white;
     color: #fff;
-    border-color: #2d92a9;
+    /* border-color: #2d92a9; */
 }
 
 /* .modal-backdrop fade in { 

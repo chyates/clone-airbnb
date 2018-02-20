@@ -1,15 +1,34 @@
-<nav id="inside-navbar-top" class="navbar navbar-expand-lg navbar-light">
-    <a [routerLink]="['/']"><img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg"></a>
-    <form id="top-search" #searchForm="ngForm" (submit)="searchByLocation()">
-      <input type="text" name="location" required [(ngModel)]="listing.location" #location="ngModel" placeholder="Search">
-      <input id="search-submit" type="submit">
-    </form>
-    <p id="quick-links">
-      <a [routerLink]="['/account']">{{ currentUser.firstName }}'s Account</a> |
-      <a [routerLink]="['/listings']">Listings</a> |
-      <a>Log Out</a>
-    </p>
-  </nav>
+<nav id="listings-nav" class="navbar navbar-toggleable navbar-light">    
+  <div class="justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="col">
+      <a class="navbar-brand" href="#">
+          <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
+      </a>
+    </div>
+    <div id="nav-form-search" class="col-9">
+      <form class="align-middle form-inline">
+        <div class="form-row">
+            <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Try 'San Francisco'">
+            <button id="home-landing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-2">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/account']">Kevin's Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/listings']">Listings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<hr>
   
   <div id="listing-container" class="container container-fluid">
     <div class="row">
@@ -25,7 +44,7 @@
     </div>
     <hr>
     <div class="row">
-      <h2>Search listings by city</h2>
+      <h2>Search results</h2>
     </div>
     <div class="home-row row">
       <div id="search-results" class="col-md" *ngFor="let result of searchListings">
