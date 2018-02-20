@@ -1,57 +1,65 @@
-<nav id="user-dash-top-nav" class="navbar navbar-toggleable navbar-light">
-  <div class="justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="col">
-      <a class="navbar-brand" href="#">
-        <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
-      </a>
-    </div>
-    <div id="nav-form-search" class="col-9">
-      <form class="align-middle form-inline">
-        <div class="form-row">
-          <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Try 'San Francisco'">
-          <button id="home-landing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
+<div id="nav-container" class="container-fluid">
+  <nav id="user-dash-top-nav" class="navbar navbar-toggleable navbar-light">
+    <div class="justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="row">
+        <div id="header-img-div" class="col my-auto">
+          <a class="navbar-brand" href="#">
+            <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
+          </a>
         </div>
-      </form>
+        <div class="col my-auto" id="nav-form-search">
+          <form id="top-search-form" class="align-middle form-inline">
+            <div class="form-row">
+              <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Search">
+              <button id="listing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" [routerLink]="['/host']">Become a Host</a>
+          <a class="nav-item nav-link" [routerLink]="['/listings']">Listings</a>
+          <a class="nav-item nav-link">Logout</a>
+        </div>
+      </div>
     </div>
-    <div class="col-2">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/account']">Kevin's Account</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/listings']">Listings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Logout</a>
-        </li>
-      </ul>
+  </nav>
+  <hr>
+  </div>
+  <div id="" class="container container-fluid">
+    <div class="row">
+      <div class="col-3">
+        <nav id="inside-nav" class="navbar navbar-toggleable navbar-light">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a [routerLink]="" (click)="switchProfile()" id="toggle-profile">Profile Settings</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="" (click)="switchListing()" id="toggle-listings">Your Listings</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="" (click)="switchMessages()" id="toggle-messages">Your Messages</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="" (click)="switchReserves()" id="toggle-reserves">Your Reservations</a>
+            </li>
+          </ul>
+        </nav>
+        <a>
+          <button id="profile-button" type="button" class="btn btn-outline-primary btn-lg btn-block">View Profile</button>
+        </a>
+      </div>
+      <div class="col-md">
+        <app-dash-listings *ngIf="viewListings"></app-dash-listings>
+        <app-dash-messages *ngIf="viewMessages"></app-dash-messages>
+        <app-dash-profile *ngIf="viewProfile"></app-dash-profile>
+        <app-dash-reserves *ngIf="viewReserves"></app-dash-reserves>
+      </div>
     </div>
   </div>
-</nav>
-<hr>
-<div id="" class="container container-fluid">
-  <div class="row">
 
-    <div class="col-sm">
-      <nav id="inside-nav" class="navbar navbar-toggleable navbar-light">
-        <div class="nav flex-column">
-            <button (click)="switchListing()" type="button" id="toggle-listings" class="inner-nav btn btn-rounded btn-outline-primary">Your Listings</button>
-            <button (click)="switchMessages()" type="button" id="toggle-messages" class="inner-nav btn btn-rounded btn-outline-primary">Messages</button>
-            <button (click)="switchProfile()" type="button" id="toggle-profile" class="inner-nav btn btn-rounded btn-outline-primary">Profile Settings</button>
-            <button (click)="switchReserves()" type="button" id="toggle-reserves" class="inner-nav btn btn-rounded btn-outline-primary">Your Reservations</button>
-        </div>
-      </nav>
-    </div>
-    <div class="col-md">
-      <app-dash-listings *ngIf="viewListings"></app-dash-listings>
-      <app-dash-messages *ngIf="viewMessages"></app-dash-messages>
-      <app-dash-profile *ngIf="viewProfile"></app-dash-profile>
-      <app-dash-reserves *ngIf="viewReserves"></app-dash-reserves>
-    </div>
-  </div>
-</div>
-
-<!-- 
+  <!-- 
 </div>
 
 <div *ngIf="addListing === true" class="form-edit">

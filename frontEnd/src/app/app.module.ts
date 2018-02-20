@@ -10,15 +10,16 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ListingComponent } from './listing/listing.component';
 import { UserDashComponent } from './user-dash/user-dash.component';
-
-// Service imports
-import { LocalApiService } from './local-api.service';
 import { ListingInfoComponent } from './listing-info/listing-info.component';
 import { DashProfileComponent } from './dash-profile/dash-profile.component';
 import { DashListingsComponent } from './dash-listings/dash-listings.component';
 import { DashReservesComponent } from './dash-reserves/dash-reserves.component';
 import { DashMessagesComponent } from './dash-messages/dash-messages.component';
 import { HostComponent } from './host/host.component';
+import { PublicProfileComponent } from './public-profile/public-profile.component';
+
+// Service imports
+import { LocalApiService } from './local-api.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HostComponent } from './host/host.component';
     DashListingsComponent,
     DashReservesComponent,
     DashMessagesComponent,
-    HostComponent
+    HostComponent,
+    PublicProfileComponent
   ],
   imports: [
     BrowserModule,

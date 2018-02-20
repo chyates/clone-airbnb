@@ -134,7 +134,7 @@
 
                                             <div class="form-group">
                                                 <div>
-                                                    <input class="form-control" type="submit" name="login-submit" id="login-submit" tabindex="8" class="form-control btn btn-register"
+                                                    <input type="submit" name="login-submit" id="login-submit" tabindex="8" class="form-control btn btn-register"
                                                         value="Log In">
                                                 </div>
                                             </div>
@@ -152,16 +152,16 @@
 </div>
 
 <div class="container-fluid">
-    <nav class="navbar navbar-toggleable navbar-light bg-faded">    
-        <div class="justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
+    <nav class="navbar navbar-toggleable navbar-light">    
+        <div class="justify-content-between collapse navbar-collapse">
             <div class="row">
-                <div>
+                <div id="header-img-div" class="col my-auto">
                     <a class="navbar-brand" href="#">
                         <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
                     </a>
                 </div>
-                <div id="nav-form-search">
-                    <form class="align-middle form-inline">
+                <div class="col my-auto" id="nav-form-search">
+                    <form id="top-search-form" class="align-middle form-inline">
                         <div class="form-row">
                             <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Try 'San Francisco'">
                             <button id="home-landing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
@@ -169,10 +169,10 @@
                     </form>
                 </div>
             </div>
-                <div class="col-2">
-                    <button type="button" id="log-reg-button" class="ml-2 btn btn-rounded btn-outline-primary" data-toggle="modal" data-target="#myModal">Sign up</button>
-                    <button type="button" id="log-reg-button" class="ml-2 btn btn-rounded btn-outline-primary" data-toggle="modal" data-target="#thisModal">Login</button>
-                </div>
+            <div class="col-2">
+                <button type="button" id="log-reg-button" class="ml-2 btn btn-rounded btn-outline-primary" data-toggle="modal" data-target="#myModal">Sign up</button>
+                <button type="button" id="log-reg-button" class="ml-2 btn btn-rounded btn-outline-primary" data-toggle="modal" data-target="#thisModal">Login</button>
+            </div>
         </div>
     </nav>
     <hr>

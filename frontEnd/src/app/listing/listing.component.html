@@ -1,36 +1,33 @@
-<nav id="listings-nav" class="navbar navbar-toggleable navbar-light">    
-  <div class="justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="col">
-      <a class="navbar-brand" href="#">
-          <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
-      </a>
-    </div>
-    <div id="nav-form-search" class="col-9">
-      <form class="align-middle form-inline">
-        <div class="form-row">
-            <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Try 'San Francisco'">
-            <button id="home-landing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
+<div id="nav-container" class="container-fluid">
+  <nav id="listings-nav" class="navbar navbar-toggleable navbar-light">    
+    <div class="justify-content-between collapse navbar-collapse">
+        <div class="row">
+          <div id="header-img-div" class="col my-auto">
+            <a class="navbar-brand" href="#">
+                <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
+            </a>
+          </div>
+          <div class="col my-auto" id="nav-form-search">
+            <form id="top-search-form" class="align-middle form-inline">
+              <div class="form-row">
+                  <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Search">
+                  <button id="listing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
+              </div>
+            </form>
+          </div>
         </div>
-      </form>
+      <div class="col-3">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" [routerLink]="['/account']">Your Account</a>
+          <a class="nav-item nav-link" [routerLink]="['/listings']">Listings</a>
+          <a class="nav-item nav-link">Logout</a>
+        </div>
+      </div>
     </div>
-    <div class="col-2">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/account']">Kevin's Account</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/listings']">Listings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<hr>
+  </nav>
+  <hr>
   
-  <div id="listing-container" class="container container-fluid">
+  <div id="listing-container">
     <div class="row">
       <h2>Most recent listings</h2>
     </div>
@@ -38,8 +35,8 @@
       <div id="recent-listings" class="col-md" *ngFor="let l of recentListings">
         <img class="img img-fluid img-thumbnail" id="recent-result-image" src="{{ l.image }}">
         <h4><a [routerLink]="[l._id]">{{ l.title }}</a></h4>
-        <li>{{ l.price | currency:'USD':true }}</li>
-        <li>{{ l.roomType }}</li>
+        <li>{{ l.price | currency:'USD':t
+        <li>{{ l.roomT
       </div>
     </div>
     <hr>
@@ -50,8 +47,9 @@
       <div id="search-results" class="col-md" *ngFor="let result of searchListings">
         <img class="img img-fluid img-thumbnail" id="search-result-image" src="{{ result.image }}">
         <h4><a [routerLink]="[result._id]">{{ result.title }}</a></h4>
-        <li>{{ result.price | currency:'USD':true }}</li>
-        <li>{{ result.roomType }}</li>
+        <li>{{ result.price | currency:'USD':t
+        <li>{{ result.roomT
       </div>
     </div>
   </div>
+</div>

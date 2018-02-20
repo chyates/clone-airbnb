@@ -1,3 +1,99 @@
-<p>
-  host works!
-</p>
+<div id="nav-container" class="container-fluid">
+  <nav id="user-dash-top-nav" class="navbar navbar-toggleable navbar-light">
+    <div class="justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="row">
+        <div id="header-img-div" class="col my-auto">
+          <a class="navbar-brand" href="#">
+            <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
+          </a>
+        </div>
+        <div class="col my-auto" id="nav-form-search">
+          <form id="top-search-form" class="align-middle form-inline">
+            <div class="form-row">
+              <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Search">
+              <button id="listing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" [routerLink]="['/host']">Become a Host</a>
+          <a class="nav-item nav-link" [routerLink]="['/listings']">Listings</a>
+          <a class="nav-item nav-link">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <hr>
+</div>
+
+<div id="host-container" class="container-fluid">
+    <h3>Add Listing</h3>
+    <hr>
+    <form #listingForm="ngForm" (submit)="createListing()">
+        <div class="form-group row">
+            <label for="title" class="text-right col-sm-3 col-form-label">Listing Title:</label>
+            <input type="text" class="form-control col-sm-9"
+            name="title"
+            required
+            [(ngModel)]="thisListing.title"
+            #title="ngModel"
+            placeholder="Enter a title">
+          </div>
+          <span class="text-info" *ngIf='!title.valid && title.touched'>You must enter a title</span>
+  
+          <div class="form-group row">
+            <label for="description" class="text-right col-sm-3 col-form-label">Description</label>
+            <input type="text" class="form-control col-sm-9"
+            name="description"
+            required
+            maxlength="250"
+            [(ngModel)]="thisListing.description"
+            #description="ngModel"
+            placeholder="Add a description">
+          </div>
+          <span class="text-info" *ngIf='!description.valid && description.touched'>You must enter a description less than 250 characters</span>
+  
+          <div class="form-group row">
+            <label for="roomType" class="text-right col-sm-3 col-form-label">What type of room is it?</label>
+            <input class="form-control col-sm-9"
+            type="text"
+            name="roomType"
+            required
+            [(ngModel)]="thisListing.roomType"
+            #roomType="ngModel"
+            placeholder="Enter a room type">
+          </div>
+          <span class="text-info" *ngIf='!roomType.valid && roomType.touched'>You must enter a room type</span>
+  
+          <div class="form-group row">
+            <label for="location" class="text-right col-sm-3 col-form-label">Where is your room located?</label>
+            <input class="form-control col-sm-9" type="" name="location" required minlength="8" [(ngModel)]="thisListing.location" #location="ngModel"
+              placeholder="Choose a location">
+          </div>
+          <span class="text-info" *ngIf='!location.valid && location.touched'>location is required and must be at least 2 characters</span>
+  
+          <div class="form-group row">
+            <label for="price" class="text-right col-sm-3 col-form-label">Verify new location</label>
+            <input class="form-control col-sm-9" type="location" name="price" required minlength="8" [(ngModel)]="thisListing.price"
+              #price="ngModel" placeholder="Verify location">
+          </div>
+          <span class="text-info" *ngIf='!price.valid && price.touched'>location is required and must be at least 8 characters</span>
+          <span class="text-info" *ngIf='price != location && price.touched'>locations must match</span>
+  
+          <div class="form-group row">
+            <label for="amountBeds" class="text-right col-sm-3 col-form-label">Phone number</label>
+            <input class="form-control col-sm-9" type="tel" name="amountBeds" pattern="[0-9]*" minlength="9" [(ngModel)]="thisListing.amountBeds"
+              #price="ngModel" placeholder="Add phone number">
+              <!-- <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx"> -->
+          </div>
+          <span class="text-info" *ngIf='!amountBeds.valid && amountBeds.touched'>Phone numbers must be at least 9 characters and consist only of digits</span>
+  
+          <div class="form-group">
+            <div class="col-sm-4">
+              <button type="submit" name="update-submit" id="update-submit" tabindex="8" class="btn btn-outline-primary float-right">Save</button>
+            </div>
+          </div>
+    </form>
+</div>

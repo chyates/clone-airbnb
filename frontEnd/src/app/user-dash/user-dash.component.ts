@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalApiService } from '../local-api.service';
 import { Router } from '@angular/router';
-import { Listing } from '../listing'
-import { User } from '../user'
-import { Reservation } from '../reservation'
+import { Listing } from '../listing';
+import { User } from '../user';
+import { Reservation } from '../reservation';
 
 @Component({
   selector: 'app-user-dash',

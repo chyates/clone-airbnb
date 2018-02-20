@@ -52,6 +52,10 @@ export class LocalApiService {
       .toPromise();
   }
 
+  // validateFileUp(){
+  //   return this._http.post
+  // }
+
   findAllListings() {
     return this._http.get('/api/currentUser/listings')
       .map(response => response.json())

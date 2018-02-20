@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalApiService } from '../local-api.service';
+import { Router } from '@angular/router';
+import { Listing } from '../listing';
+import { User } from '../user';
+import { Reservation } from '../reservation';
 
 @Component({
   selector: 'app-dash-profile',
@@ -7,9 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _localService: LocalApiService,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
   }
 
+  upUser = new User();
+
+  validateProfile(){
+    
+  }
 }

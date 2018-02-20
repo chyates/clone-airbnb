@@ -1,0 +1,49 @@
+#profile-card {
+    border-radius: 0;
+}
+
+.card-header {
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+#update-submit {
+    background-color: var(--coral);
+    border-radius: 5px;
+    color: white;
+    border-color: var(--coral);
+}
+
+#update-submit:hover {
+    color: #fff;
+    background-color: var(--coral);
+    border-color: var(--coral);
+}
+
+#user-update-form {
+    margin: 1rem;
+    /* padding: 1rem; */
+}
+
+#user-update-form input {
+    border-radius: 0;
+    /* padding: 1rem; */
+}
+
+#user-update-form label {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+::-webkit-input-placeholder {
+    font-size: 13px!important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 13px!important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 13px!important;
+}

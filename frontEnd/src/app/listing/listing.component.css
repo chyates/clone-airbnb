@@ -8,6 +8,31 @@
     height: 55px;
     display: inline-block;
     vertical-align: top;
+    border-right: 1px solid var(--secondary);
+}
+
+#header-img-div {
+    padding: 0;
+}
+
+#top-search-form input {
+    border-radius: 0;
+}
+
+hr {
+    margin: 0rem 0rem 2rem 0rem;
+}
+
+::-webkit-input-placeholder {
+    font-size: 14px!important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 14px!important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 14px!important;
 }
 
 .home-row {
@@ -34,11 +59,11 @@
     border: none;
 }
 
-.container {
+/* .container {
     display: inline-block;
     vertical-align: top;
     margin: 15px 15px 15px 15px;
-}
+} */
 h2 {
     text-align: center;
     margin-left: 150px;

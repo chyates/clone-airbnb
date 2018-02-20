@@ -18,6 +18,7 @@
     margin: 0px;
     /* background-color: var(--light); */
 }
+
 #login-form label, #register-form label {
     /* font-size: 80%; */
     font-weight: bold;
@@ -115,23 +116,39 @@
 .navbar {
     background-color:white;
     color: #fff;
-    /* border-color: #2d92a9; */
 }
-
-/* .modal-backdrop fade in { 
-    display: none;
-} */
 
 /* navbar CSS */
 #header-logo {
-    width: 80px;
-    height: 60px;
-    opacity: 0.9;
+    width: 85px;
+    height: 55px;
+    display: inline-block;
+    vertical-align: top;
+    border-right: 1px solid var(--secondary);
 }
 
-.navbar-brand {
-    margin: 0;
+#header-img-div {
     padding: 0;
+}
+
+#top-search-form input {
+    border-radius: 0;
+}
+
+hr {
+    margin: 0rem 0rem 2rem 0rem;
+}
+
+::-webkit-input-placeholder {
+    font-size: 14px!important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 14px!important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 14px!important;
 }
 
 /* recent listings CSS */
@@ -146,10 +163,6 @@
 
 #search-field {
     background: var(--white);
-}
-
-.col {
-    padding: 0px;
 }
 
 .card-img-top {
