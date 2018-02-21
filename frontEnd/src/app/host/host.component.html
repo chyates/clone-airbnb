@@ -57,8 +57,7 @@
   
           <div class="form-group row">
             <label for="roomType" class="text-right col-sm-3 col-form-label">What type of room is it?</label>
-            <input class="form-control col-sm-9"
-            type="text"
+            <input class="form-control col-sm-9" type="text"
             name="roomType"
             required
             [(ngModel)]="thisListing.roomType"
@@ -68,32 +67,65 @@
           <span class="text-info" *ngIf='!roomType.valid && roomType.touched'>You must enter a room type</span>
   
           <div class="form-group row">
-            <label for="location" class="text-right col-sm-3 col-form-label">Where is your room located?</label>
-            <input class="form-control col-sm-9" type="" name="location" required minlength="8" [(ngModel)]="thisListing.location" #location="ngModel"
-              placeholder="Choose a location">
+            <label for="price" class="text-right col-sm-3 col-form-label">Price per night:</label>
+            <input type="location" 
+            class="form-control col-sm-9" 
+            name="price" 
+            required 
+            [(ngModel)]="thisListing.price"
+            #price="ngModel" 
+            placeholder="Verify location">
           </div>
-          <span class="text-info" *ngIf='!location.valid && location.touched'>location is required and must be at least 2 characters</span>
+          <span class="text-info" *ngIf='!price.valid && price.touched'>Price is required</span>
   
           <div class="form-group row">
-            <label for="price" class="text-right col-sm-3 col-form-label">Verify new location</label>
-            <input class="form-control col-sm-9" type="location" name="price" required minlength="8" [(ngModel)]="thisListing.price"
-              #price="ngModel" placeholder="Verify location">
-          </div>
-          <span class="text-info" *ngIf='!price.valid && price.touched'>location is required and must be at least 8 characters</span>
-          <span class="text-info" *ngIf='price != location && price.touched'>locations must match</span>
-  
-          <div class="form-group row">
-            <label for="amountBeds" class="text-right col-sm-3 col-form-label">Phone number</label>
-            <input class="form-control col-sm-9" type="tel" name="amountBeds" pattern="[0-9]*" minlength="9" [(ngModel)]="thisListing.amountBeds"
-              #price="ngModel" placeholder="Add phone number">
+            <label for="amountBeds" class="text-right col-sm-3 col-form-label">How many beds are you offering?</label>
+            <input class="form-control col-sm-9" type="number" name="amountBeds"
+            min="1" 
+            [(ngModel)]="thisListing.amountBeds"
+            #amountBeds="ngModel" 
+            placeholder="Add phone number">
               <!-- <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx"> -->
           </div>
-          <span class="text-info" *ngIf='!amountBeds.valid && amountBeds.touched'>Phone numbers must be at least 9 characters and consist only of digits</span>
+          <span class="text-info" *ngIf='!amountBeds.valid && amountBeds.touched'>You must provide at least 1 bed.</span>
   
           <div class="form-group">
             <div class="col-sm-4">
-              <button type="submit" name="update-submit" id="update-submit" tabindex="8" class="btn btn-outline-primary float-right">Save</button>
+              <button type="submit" name="update-submit" id="listing-submit" tabindex="8" class="btn btn-outline-primary float-right">Save</button>
             </div>
           </div>
+    </form>
+    <form (submit)="createListing()" #locationForm="ngForm">
+    <div class="form-group row">
+        <label for="city" class="text-right col-sm-3 col-form-label">Where is your room located?</label>
+        <input type="text" class="form-control col-sm-3"
+        name="city"
+        required
+        minlength="2"
+        [(ngModel)]="thisLocation.city"
+        #city="ngModel"
+        placeholder="Enter a city">
+        <span class="text-info" *ngIf='!city.valid && city.touched'>City is required and must be at least 2 characters</span>
+
+        <select class="col-sm-3"
+        name="state"
+        required
+        minlength="2"
+        [(ngModel)]="thisLocation.state"
+        #state="ngModel">
+          <option *ngFor="let state of allStates" value="{{ state }}">{{ state }}</option>
+        </select>
+        <span class="text-info" *ngIf='!state.valid && state.touched'>A state or territory is required and must be at least 2 characters</span>
+
+        <input type="text"
+        class="form-control col-sm-3"
+        name="zipCode"
+        required
+        minlength="5"
+        [(ngModel)]="thisLocation.zipCode"
+        #zipCode="ngModel"
+        placeholder="Enter a zip code">
+      </div>
+      <span class="text-info" *ngIf='!zipCode.valid && zipCode.touched'>Zip code is required and must be at least 5 characters</span>
     </form>
 </div>
