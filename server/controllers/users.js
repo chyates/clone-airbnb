@@ -7,7 +7,6 @@ mongoose.Promise = global.Promise;
 
 module.exports = {
     register: function(req, res) {
-        console.log("Inside register function, body input is:", req.body);
         User.find({email: req.body.email}, function(error, user) {
             if (user.length >= 1) {
                 res.json({
@@ -28,13 +27,9 @@ module.exports = {
                 newUser.conversations = [];
                 newUser.save(function(err, user) {
                     if (err) {
-                        console.log("new user:", newUser);
-                        console.log("Didn't find user and couldn't save");
                         res.json({error: err, loggedIn: false});
                     } else {
-                        console.log("Made it to save");
                         req.session.user = newUser;
-                        console.log(req.session.user);
                         res.json({user: newUser, loggedIn: true});
                     }
                 });
@@ -55,7 +50,6 @@ module.exports = {
                         res.json({passwordError: 'Password is incorrect. Please try again', loggedIn: false});
                     }
                 } else {
-                    console.log("Couldn't find user", user);
                     res.json({emailError: 'Email not found, please register or try again',loggedIn: false});
                 }
             }
@@ -70,7 +64,6 @@ module.exports = {
     update: function (req, res) {
         User.findById(req.params.id, function (err, user) {
             if (err) {
-                console.log('user update function: could not find user');
             } else {
                 user.firstName = req.body.firstName;
                 user.lastName = req.body.lastName;
@@ -90,7 +83,7 @@ module.exports = {
     regHost: function (req, res) {
         User.findById(req.params.id, function (err, user) {
             if (err) {
-                console.log(err);
+                res.json({ error: err });
             } else {
                 user.userLevel = true;
                 user.save(function (err, user) {
@@ -132,7 +125,6 @@ module.exports = {
 //         },
 
     current: function(req, res){
-        // console.log("In current user function:", req.session.user);
         if (req.session.user){
             var currentUser = req.session.user;
             res.json({user: currentUser});

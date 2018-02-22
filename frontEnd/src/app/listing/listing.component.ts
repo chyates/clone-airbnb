@@ -59,10 +59,10 @@ export class ListingComponent implements OnInit {
     .then(data => this.allListings = data.listings);
   }
 
-  searchByLocation(){
-    this._localService.searchListings(this.listing.location)
-    .then(data => this.searchListings = data.listings);
-  }
+  // searchByLocation(){
+  //   this._localService.searchListings(this.listing.location)
+  //   .then(data => this.searchListings = data.listings);
+  // }
 
   getRecentListings(){
     this._localService.findRecentList()

@@ -88,10 +88,10 @@ export class UserDashComponent implements OnInit {
     })
   }
 
-  searchByLocation(){
-    this._localService.searchListings(this.listing.location)
-    .then(data => this.searchListings = data.listings);
-  }
+  // searchByLocation(){
+  //   this._localService.searchListings(this.listing.location)
+  //   .then(data => this.searchListings = data.listings);
+  // }
 
   getUserListings(){
     this._localService.findAllUserListings()

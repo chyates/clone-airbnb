@@ -30,7 +30,6 @@
 
 <div id="host-container" class="container-fluid">
     <h3>Add Listing</h3>
-    <hr>
     <form #listingForm="ngForm" (submit)="createListing()">
         <div class="form-group row">
             <label for="title" class="text-right col-sm-3 col-form-label">Listing Title:</label>
@@ -95,28 +94,30 @@
             </div>
           </div>
     </form>
-    <form (submit)="createListing()" #locationForm="ngForm">
-    <div class="form-group row">
-        <label for="city" class="text-right col-sm-3 col-form-label">Where is your room located?</label>
-        <input type="text" class="form-control col-sm-3"
-        name="city"
-        required
-        minlength="2"
-        [(ngModel)]="thisLocation.city"
-        #city="ngModel"
-        placeholder="Enter a city">
-        <span class="text-info" *ngIf='!city.valid && city.touched'>City is required and must be at least 2 characters</span>
+    <div *ngIf="">
 
-        <select class="col-sm-3"
-        name="state"
-        required
-        minlength="2"
-        [(ngModel)]="thisLocation.state"
-        #state="ngModel">
+      <form (submit)="createListing()" #locationForm="ngForm">
+        <div class="form-group row">
+          <label for="city" class="text-right col-sm-3 col-form-label">Where is your room located?</label>
+          <input type="text" class="form-control col-sm-3"
+          name="city"
+          required
+          minlength="2"
+          [(ngModel)]="thisLocation.city"
+          #city="ngModel"
+          placeholder="Enter a city">
+          <span class="text-info" *ngIf='!city.valid && city.touched'>City is required and must be at least 2 characters</span>
+          
+          <select class="col-sm-3"
+          name="state"
+          required
+          minlength="2"
+          [(ngModel)]="thisLocation.state"
+          #state="ngModel">
           <option *ngFor="let state of allStates" value="{{ state }}">{{ state }}</option>
         </select>
         <span class="text-info" *ngIf='!state.valid && state.touched'>A state or territory is required and must be at least 2 characters</span>
-
+        
         <input type="text"
         class="form-control col-sm-3"
         name="zipCode"
@@ -128,4 +129,5 @@
       </div>
       <span class="text-info" *ngIf='!zipCode.valid && zipCode.touched'>Zip code is required and must be at least 5 characters</span>
     </form>
+  </div>
 </div>

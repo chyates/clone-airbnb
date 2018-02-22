@@ -16,11 +16,11 @@ module.exports = {
             listing.reservations.push(newReserve);
             listing.save(function(err) {
                 if (err){
-                    console.log("Reservation create function; failed to save to listing");
+                    res.json({ error: err });
                 } else {
                     newReserve.save(function(err, reservation) {
                         if (err) {
-                            console.log("Reservation create function: failed to create reserve");
+                            res.json({ error: err });
                         } else {
                             res.json({reservation: reservation});
                         }
@@ -33,12 +33,12 @@ module.exports = {
     approve: function(req, res) {
         Reservation.findById(req.params.id, function(err, reservation) {
             if (err) {
-                console.log("In approve reserve function: could not find reserve");
+                res.json({ error: err });
             } else {
                 bookStatus: req.body.bookStatus
                 reservation.save(function(err, reservation) {
                     if (err) {
-                        console.log("In approve reserve function: could not save bookStatus");
+                        res.json({ error: err });
                     } else {
                         res.json({reservation: reservation});
                     }
@@ -50,14 +50,14 @@ module.exports = {
     update: function(req, res) {
         Reservation.findById(req.params.id, function(err, reservation) {
             if (err) {
-                console.log("In update reserve function: could not find reserve");
+                res.json({ error: err });
             } else {
                 reservation.startDate = req.body.startDate;
                 reservation.endDate = req.body.endDate;
                 reservation.amtGuests = req.body.amtGuests;
                 reservation.save(function(err, reservation) {
                     if (err) {
-                        console.log("In update reserve function: could not save new info");
+                        res.json({ error: err });
                     } else {
                         res.json({reservation: reservation});
                     }
@@ -81,9 +81,8 @@ module.exports = {
         .populate('_listing')
         .exec(function(err, reservations){
             if (err) {
-                console.log("Inside show2 function, could not populate listings of all reserves");
+                res.json({ error: err });
             } else {
-                console.log(reservations);
                 res.json({reservations: reservations});
             }
         })
@@ -94,7 +93,7 @@ module.exports = {
         .populate('_booker').populate('_listing')
         .exec(function (err, reservation){
             if (err){
-                console.log("In find function, couldn't find reservation");
+                res.json({ error: err });
             } else {
                 res.json({reservation: reservation});
             }

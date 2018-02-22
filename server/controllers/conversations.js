@@ -29,7 +29,7 @@ module.exports = {
                 });
                 newConversation.save(function(err, conversation){
                     if (err) {
-                        console.log("In create as guest function: couldn't save conversation start");
+                        res.json({ error: err });
                     } else {
                         res.json({conversation: conversation});
                     }
@@ -64,7 +64,7 @@ module.exports = {
                 });
                 newConversation.save(function(err, conversation){
                     if (err) {
-                        console.log("In create as host function: couldn't save conversation start");
+                        res.json({ error: err });
                     } else {
                         res.json({conversation: conversation});
                     }
@@ -76,7 +76,7 @@ module.exports = {
     showGuest: function(req, res) {
         Conversation.find({_guest: req.session.currentUser._id}, function (err, conversation){
             if (err) {
-                console.log("In show guest inbox function: could not load message list");
+                res.json({ error: err });
             } else {
                 res.json({conversation: conversation});
             }
@@ -86,7 +86,7 @@ module.exports = {
     showHost: function (req, res){
         Conversation.find({_guest: req.session.currentUser._id}, function (err, conversation){
             if (err) {
-                console.log("In show guest inbox function: could not load message list");
+                res.json({ error: err });
             } else {
                 res.json({conversation: conversation});
             }
@@ -96,7 +96,7 @@ module.exports = {
     find: function(req, res) {
         Conversation.findById({_id: req.params.id}, function(err, message){
             if (err) {
-                console.log("In view one message function: could not find message");
+                res.json({ error: err });
             } else {
                 res.json({message: message});
             }
