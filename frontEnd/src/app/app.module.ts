@@ -20,6 +20,8 @@ import { PublicProfileComponent } from './public-profile/public-profile.componen
 
 // Service imports
 import { LocalApiService } from './local-api.service';
+import { ListingFormComponent } from './listing-form/listing-form.component';
+import { BookReserveComponent } from './book-reserve/book-reserve.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { LocalApiService } from './local-api.service';
     DashReservesComponent,
     DashMessagesComponent,
     HostComponent,
-    PublicProfileComponent
+    PublicProfileComponent,
+    ListingFormComponent,
+    BookReserveComponent
   ],
   imports: [
     BrowserModule,

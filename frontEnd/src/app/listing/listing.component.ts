@@ -19,9 +19,6 @@ export class ListingComponent implements OnInit {
   ngOnInit() {
     // this._route.params.subscribe(params => params['id']);
     this._route.params.subscribe(params => this.currentListing(params['id']));
-    this.getCurrentUser();
-    this.getAllListings();
-    this.getRecentListings();
   }
 
 

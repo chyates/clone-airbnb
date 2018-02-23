@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var ListingSchema = new mongoose.Schema({
     title: { type: String, required: true },
-    description: { type: String, required: true, maxlength: 250 },
+    description: { type: String, required: true },
     roomType: { type: String, required: true },
     price: { type: Number, required: true },
     amountBeds: { type: Number, required: true, min: 1 },

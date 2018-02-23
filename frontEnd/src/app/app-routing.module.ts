@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'listings', component: ListingComponent },
   { path: 'listings/:id', component: ListingInfoComponent },
   { path: 'account', component: UserDashComponent },
-  { path: 'host', component: HostComponent }
+  { path: 'host', component: HostComponent },
+  { path: 'profile', component: PublicProfileComponent }
 ];
 
 @NgModule({

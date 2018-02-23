@@ -33,9 +33,6 @@ export class UserDashComponent implements OnInit {
   currentUser = new User();
 
   ngOnInit() {
-    this.getCurrentUser();
-    this.getUserListings();
-    this.getUserReserves();
   }
   
   switchListing(){
@@ -68,13 +65,13 @@ export class UserDashComponent implements OnInit {
     this.viewReserves = false;
   }
 
-  createListing(){
-    return this._localService.createListing(this.listing)
-    .then(data => {
-      this.listings = data.listings;
-      // this.switchviewListings();
-    })
-  }
+  // createListing(){
+  //   return this._localService.createListing(this.listing)
+  //   .then(data => {
+  //     this.listings = data.listings;
+  //     // this.switchviewListings();
+  //   })
+  // }
 
   getCurrentUser(){
     this._localService.currentUser()
@@ -92,16 +89,4 @@ export class UserDashComponent implements OnInit {
   //   this._localService.searchListings(this.listing.location)
   //   .then(data => this.searchListings = data.listings);
   // }
-
-  getUserListings(){
-    this._localService.findAllUserListings()
-    .then(data => {
-      this.listings = data.listings,
-      console.log("Made it to component, inside get user listings function")});
-  }
-
-  getUserReserves(){
-    this._localService.viewAllReserves()
-    .then(data => this.reservations = data.reservations);
-  }
 }

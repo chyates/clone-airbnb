@@ -1,0 +1,78 @@
+<div id="list-form-container" class="container container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <h3 class="text-right">Add Listing</h3>
+    </div>
+    <div class="col-md-9">
+      <div id="listing-card" class="card">
+        <h5 class="card-header bg-grey">Required information</h5>
+        <div class="card-body">
+          <form id="listing-form" #listingForm="ngForm" (submit)="createListing()">
+            <div class="form-group row">
+              <label for="title" class="text-right col-sm-3 col-form-label">Listing Title</label>
+              <input type="text" class="form-control col-sm-9"
+              name="title"
+              required
+              [(ngModel)]="thisListing.title"
+              #title="ngModel"
+              placeholder="Enter a title">
+            </div>
+            <span class="text-info" *ngIf='!title.valid && title.touched'>You must enter a title</span>
+            
+            <div class="form-group row">
+              <label for="description" class="text-right col-sm-3 col-form-label">Description</label>
+              <textarea class="form-control col-sm-9"
+              name="description"
+              required
+              [(ngModel)]="thisListing.description"
+              #description="ngModel"
+              placeholder="Add a description"></textarea>
+            </div>
+            <span class="text-info" *ngIf='!description.valid && description.touched'>You must enter a description less than 250 characters</span>
+            
+            <div class="form-group row">
+              <label for="roomType" class="text-right col-sm-3 col-form-label">What type of room is it?</label>
+              <input class="form-control col-sm-9" type="text"
+              name="roomType"
+              required
+              [(ngModel)]="thisListing.roomType"
+              #roomType="ngModel"
+              placeholder="Enter a room type">
+          </div>
+          <span class="text-info" *ngIf='!roomType.valid && roomType.touched'>You must enter a room type</span>
+          
+          <div class="form-group row">
+            <label for="price" class="text-right col-sm-3 col-form-label">Price per night</label>
+            <input type="number" 
+            class="form-control col-sm-9" 
+            name="price" 
+            required 
+            [(ngModel)]="thisListing.price"
+            #price="ngModel" 
+            placeholder="Add price">
+          </div>
+          <span class="text-info" *ngIf='!price.valid && price.touched'>Price is required</span>
+          
+          <div class="form-group row">
+            <label for="amountBeds" class="text-right col-sm-3 col-form-label">How many beds are you offering?</label>
+            <input class="form-control col-sm-9" type="number" name="amountBeds"
+            min="1" 
+            [(ngModel)]="thisListing.amountBeds"
+            #amountBeds="ngModel" 
+            placeholder="Add number of beds">
+            <!-- <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx"> -->
+          </div>
+          <span class="text-info" *ngIf='!amountBeds.valid && amountBeds.touched'>You must provide at least 1 bed.</span>
+          <input type="hidden" name="location" value="{{ addedLoc._id }}">
+          
+          <div class="form-group">
+            <div class="col-sm-4">
+              <button type="submit" id="listing-submit" tabindex="8" class="btn btn-outline-primary float-right">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
