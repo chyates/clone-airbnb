@@ -13,7 +13,10 @@ import { LocalApiService } from '../local-api.service';
 })
 export class HostComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _localService: LocalApiService,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -21,8 +24,21 @@ export class HostComponent implements OnInit {
   // FIGURE OUT SUBMIT FUNCTIONALITY: attach JS file or create location first, then listing, and populate location data inside listing form?
   thisListing = new Listing();
   thisLocation = new Location();
+  addedLoc = new Location();
   allStates = ['AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA','GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','MP','OH','OK','OR','PW','PA','PR','RI','SC','SD','TN','TX','UT','VT','VI','VA','WA','WV','WI','WY'];
 
+  validLoc = false;
+  validateLocation(){
+    return this._localService.createLocation(this.thisLocation)
+    .then(data => this.validLoc = true);
+  }
+
+  getLastLoc(){
+    return this._localService.findLastCreated()
+    .then(data => this.addedLoc = data.location);
+  }
+
+  
 //   fileChange(event) {
 //     let fileList: FileList = event.target.files;
 //     if (fileList.length > 0) {

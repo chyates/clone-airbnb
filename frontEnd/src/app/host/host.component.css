@@ -1,0 +1,49 @@
+#host-card {
+    border-radius: 0;
+}
+
+.card-header {
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+#listing-submit {
+    background-color: var(--coral);
+    border-radius: 5px;
+    color: white;
+    border-color: var(--coral);
+}
+
+#listing-submit:hover {
+    color: #fff;
+    background-color: var(--coral);
+    border-color: var(--coral);
+}
+
+#listing-form {
+    margin: 1rem;
+    /* padding: 1rem; */
+}
+
+#listing-form input {
+    border-radius: 0;
+    /* padding: 1rem; */
+}
+
+#listing-form label {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+::-webkit-input-placeholder {
+    font-size: 13px!important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 13px!important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 13px!important;
+}

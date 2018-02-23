@@ -1,0 +1,41 @@
+DashListings:
+    + Find all listings hosted by user (if host)
+
+DashMessages:
+    + Find all messages sent by user (received?)
+    + Send messages
+    + Delete message
+
+DashProfile:
+    + Update user information
+
+DashReserves:
+    + Find all reservations booked by user
+
+Host:
+    + Add location
+    + Add listing w/ new location information
+
+LandingPage:
+    + Validate register/login
+    + Get recent listings
+    + Search listings by city
+
+Listing:
+    + View most recent listings (4)
+    + Search listings by city (or other parameters??)
+
+ListingInfo:
+    + View listing information for 1 listing
+        - Reviews, location, room type, photo, etc.
+    + Search listings by city (or other parameters??)
+    + If guest: send reservation book request
+    + If host: view pending reservations, approve or deny them 
+
+PublicProfile:
+    + Find user information
+    + Find past reservations as guest
+    + Find user listings (if they exist)
+
+UserDash:
+    + Search listings by city (or other parameters??)

@@ -45,16 +45,12 @@ export class LocalApiService {
       .toPromise();
   }
 
-  // Listing functions: filter, findAll, findOne, create, update, delete
-  createListing(listing) {
-    return this._http.post('/api/createListing', listing)
+  // Listing functions: create, findAll, search, findAllUser, findOne, findRecent, update, delete
+  createListing(listing, location) {
+    return this._http.post('/api/createListing', listing, location)
       .map(response => response.json())
       .toPromise();
   }
-
-  // validateFileUp(){
-  //   return this._http.post
-  // }
 
   findAllListings() {
     return this._http.get('/api/currentUser/listings')
@@ -99,7 +95,7 @@ export class LocalApiService {
       .toPromise();
   }
 
-  // Reservation functions: create, update (guest), approve (host), viewAll, viewOne, cancel (delete)
+  // Reservation functions: create, approve (host), update (guest), viewAll, viewOne, findAllListing, findAllUser, cancel (delete)
   createReserve(id, reservation) {
     return this._http.post(`/api/currentUser/listings/${id}/createReserve`, reservation)
       .map(response => response.json())
@@ -130,7 +126,7 @@ export class LocalApiService {
       .toPromise();
   }
 
-  // Review functions: add, delete
+  // Review functions: add, findAllListing, findAllUser, delete
   addReview(id, review) {
     return this._http.post(`/api/currentUser/listings/${id}/newReview`, review)
       .map(response => response.json())
@@ -143,8 +139,7 @@ export class LocalApiService {
       .toPromise();
   }
 
-  // Conversation functions: create (send), viewAll, viewOne, delete
-  // **CREATE FUNCTIONS NEED HELLA TESTING**
+  // Conversation functions: create (send guest/host), viewAllGuest, viewAllHost, viewOne, delete
   sendGuestMessage(id, message) {
     return this._http.post(`/api/currentUser/listings/${id}/guestMessage`, message)
       .map(response => response.json())
@@ -174,4 +169,17 @@ export class LocalApiService {
       .map(response => response.json())
       .toPromise();
   }
+  // Location functions: create (as host), findLastCreated, search, findListingByLoc
+  createLocation(location){
+    return this._http.post('/api/locations/create', location)
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  findLastCreated(){
+    return this._http.get('/api/locations/last')
+    .map(response => response.json())
+    .toPromise();
+  }
 }
+

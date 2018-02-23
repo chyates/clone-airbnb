@@ -1,18 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
-
 /*!
 * Bootswatch v4.0.0-beta.2
 * Homepage: https://bootswatch.com
 * Copyright 2012-2017 Thomas Park
 * Licensed under MIT
 * Based on Bootstrap
-*/
-/*!
+
 * Bootstrap v4.0.0-beta.2 (https://getbootstrap.com)
 * Copyright 2011-2017 The Bootstrap Authors
 * Copyright 2011-2017 Twitter, Inc.
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 */
+
+
 /* Global CSS (litera theme, bootswatch) */
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 :root {
@@ -77,31 +76,68 @@
    border-color: var(--teal);
  }
  
- .btn-outline-primary:hover {
-   color: #fff;
-   background-color: var(--teal);
-   border-color: var(--teal);
- }
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: var(--teal);
+  border-color: var(--teal);
+}
 
- .btn-rounded {
-   border-radius: 17px;
+.btn-rounded {
+  border-radius: 17px;
 }
  
- .btn-outline-primary:focus, .btn-outline-primary.focus {
-   -webkit-box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.5);
-           box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.5);
- }
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.5);
+}
  
- .btn-outline-primary.disabled, .btn-outline-primary:disabled {
-   color: var(--teal);
-   background-color: transparent;
- }
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+  color: var(--teal);
+  background-color: transparent;
+}
  
- .btn-outline-primary:not([disabled]):not(.disabled):active, .btn-outline-primary:not([disabled]):not(.disabled).active,
- .show > .btn-outline-primary.dropdown-toggle {
-   color: #fff;
-   background-color: var(--teal);
-   border-color: var(--teal);
-   -webkit-box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.5);
-           box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.5);
- }
+.btn-outline-primary:not([disabled]):not(.disabled):active, .btn-outline-primary:not([disabled]):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: var(--teal);
+  border-color: var(--teal);
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.5);
+}
+
+/* Global Navbar CSS */
+.navbar {
+  background-color:white;
+}
+
+#header-logo {
+  width: 85px;
+  height: 55px;
+  display: inline-block;
+  vertical-align: top;
+  border-right: 1px solid var(--secondary);
+}
+
+#header-img-div {
+  padding: 0;
+}
+
+#top-search-form input {
+  border-radius: 0;
+}
+
+hr {
+  margin: 0rem 0rem 2rem 0rem;
+}
+
+::-webkit-input-placeholder {
+  font-size: 14px!important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  font-size: 14px!important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  font-size: 14px!important;
+}

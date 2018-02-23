@@ -59,24 +59,29 @@ module.exports = function (app) {
 
     app.get('/api/currentUser/reservations/:id', function(req, res) {
         reservations.find(req, res);
+    })  
+    
+    // Reviews
+    app.get('/api/listings/:id/reviews', function(req, res){
+        reviews.show(req, res);
     })
 
     // Conversations
     app.get('/api/currentUser/inbox/guest', function(req, res){
         conversations.showGuest(req, res);
     })
-
+    
     app.get('/api/currentUser/inbox/host', function(req, res) {
         conversations.showHost(req, res);
     })
-
+    
     app.get('/api/currentUser/inbox/:id', function(req, res){
         conversations.find(req, res);
     })
 
-    // Reviews
-    app.get('/api/listings/:id/reviews', function(req, res){
-        reviews.show(req, res);
+    // Locations
+    app.get('/api/locations/last', function(req, res){
+        locations.lastCreated(req, res);
     })
 
     // -----------------
@@ -138,6 +143,11 @@ module.exports = function (app) {
 
     app.post('/api/currentUser/listings/:id/hostMessage', function(req, res){
         conversations.createAsGuest(req, res);
+    })
+
+    // Locations
+    app.post('/api/locations/create', function(req, res){
+        locations.create(req, res);
     })
 
     // Catch-all route
