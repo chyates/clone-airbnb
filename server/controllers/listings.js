@@ -104,6 +104,8 @@ module.exports = {
     },
 
     findRecentLanding: function(req, res){
+        // console.log("Hit recent landing controller")
+        // console.log(req.body)
         Listing.find({}, function (err, listings){
             if (err) {
                 res.json({ error: err });

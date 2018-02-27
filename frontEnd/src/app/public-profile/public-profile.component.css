@@ -1,0 +1,44 @@
+#user-prof-img {
+    /* width: 200px;
+    height: 200px; */
+    width: 100%;
+    /* display: inline-block;
+    vertical-align: top; */
+    /* border: 1px solid grey; */
+}
+
+.card-text{
+    font-size: 16px;
+}
+
+.h6 {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+#host-review-name, span {
+    color: var(--secondary);
+}
+
+#user-prof-side-card {
+    border-radius: 0;
+}
+
+#host-reviews {
+    vertical-align: middle;
+}
+
+#host-img {
+    width: 60px;
+    height: 60px;
+    /* display: inline-block;
+    vertical-align: top; */
+}
+
+/* #reviews-image {
+    vertical-align: top;
+} */
+
+#reviews-text {
+    vertical-align: middle;
+}

@@ -18,6 +18,7 @@ export class LandingPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // this.getRecentListings();
   }
 
   loggedIn;

@@ -45,6 +45,12 @@ export class LocalApiService {
       .toPromise();
   }
 
+  // User property functions: create, update, delete
+  // User property URLS:
+  //   /api/users/{id}/props/create
+  //   /api/users/{id}/props/update
+  //   /api/users/{id}/props/delete
+
   // Listing functions: create, findAll, search, findAllUser, findOne, findRecent, update, delete
   createListing(listing, location) {
     return this._http.post('/api/createListing', listing, location)

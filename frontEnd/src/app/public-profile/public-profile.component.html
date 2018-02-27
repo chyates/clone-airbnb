@@ -1,3 +1,85 @@
-<p>
-  public-profile works!
-</p>
+<div id="nav-container" class="container-fluid">
+  <nav id="top-nav" class="navbar navbar-toggleable navbar-light">
+    <div class="justify-content-between collapse navbar-collapse">
+      <div class="row">
+        <div id="header-img-div" class="col my-auto">
+          <a class="navbar-brand" href="#">
+            <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
+          </a>
+        </div>
+        <div class="col my-auto" id="nav-form-search">
+          <form id="top-search-form" class="align-middle form-inline">
+            <div class="form-row">
+              <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Search">
+              <button id="listing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" [routerLink]="['/account']">Your Account</a>
+          <a class="nav-item nav-link" [routerLink]="['/listings']">Listings</a>
+          <a class="nav-item nav-link">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <hr>
+</div>
+<div class="container container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <img id="user-prof-img" class="img-fluid" alt="User image" src="assets/blankUser.png">
+      <div id="user-prof-side-card" class="card bg-light mb-3">
+        <div class="card-header">Verified info:</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-8">
+                <p class="card-text">Email</p>
+              </div>
+              <div class="col-sm-4">
+                <i class="far fa-check-circle"></i>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <p class="card-text">Phone number</p>
+            </div>
+            <div class="col-sm-4">
+              <i class="far fa-check-circle"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <h3 class="display-4">Hey, I'm <span style="font-weight: bold;">name</span>!</h3>
+      </div>
+      <div class="row">
+        <h5>Location | Created at date</h5>
+      </div>
+      <div class="row">
+        <h5>Reviews <span class="h6">(Review count)</span></h5>
+      </div>
+      <div class="row">
+        <p class="lead">Reviews from hosts:</p>
+      </div>
+      <div id="host-reviews" class="row">
+        <div class="col-sm-2">
+          <img id="host-img" class="img-fluid" alt="Host image" src="assets/blankUser.png">
+        </div>
+        <div id="reviews-text" class="col-sm-10">
+          <div class="row">
+            <p class="h6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          </div>
+          <div class="row">
+            <p id="host-review-name" class="h6">Review left by host</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

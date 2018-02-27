@@ -1,5 +1,3 @@
-// const users = require('../controllers/user_controller.js');
-
 // Require statments
 var mongoose = require('mongoose');
 var listings = require('../controllers/listings.js');
@@ -8,6 +6,7 @@ var conversations = require('../controllers/conversations.js');
 var reservations = require('../controllers/reservations.js');
 var reviews = require('../controllers/reviews.js');
 var users = require('../controllers/users.js');
+// var properties = require('../controllers/optProps.js');
 
 // Model imports
 var Listing = mongoose.model('Listing');
@@ -16,6 +15,7 @@ var Conversation = mongoose.model('Conversation');
 var Reservation = mongoose.model('Reservation');
 var Review = mongoose.model('Review');
 var User = mongoose.model('User');
+var Property = mongoose.model('Property');
 
 module.exports = function (app) {
     // ----------------
@@ -30,6 +30,9 @@ module.exports = function (app) {
     app.get('/api/logout', function(req, res){
         users.logout(req, res);
     })
+
+    // User Properties
+
 
     // Listings
     app.get('/api/currentUser/listings', function(req, res){
@@ -104,6 +107,9 @@ module.exports = function (app) {
     app.post('/api/userHost/:id', function(req, res){
         users.regHost(req, res);
     })
+
+    // User Properties
+    
 
     // Listings
     app.post('/api/createListing', function(req, res){
