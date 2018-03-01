@@ -10,39 +10,45 @@ export class LocalApiService {
 
   // User functions: register, login/out, update, current, toHost
   registerUser(user) {
-    return this._http.post('/api/register', user)
+    return this._http.post('/api/users/register', user)
       .map(response => response.json())
       .toPromise();
   }
 
   loginUser(user) {
-    return this._http.post('api/login', user)
+    return this._http.post('api/users/login', user)
       .map(response => response.json())
       .toPromise();
   }
 
   currentUser() {
-    return this._http.get('/api/showUser')
+    return this._http.get('/api/users/current')
       .map(response => response.json())
       .toPromise();
   }
 
   logoutUser() {
-    return this._http.get('/api/logout')
+    return this._http.get('/api/users/logout')
       .map(response => response.json())
       .toPromise();
   }
 
   updateUser(id, user) {
-    return this._http.post(`/api/updateUser/${id}`, user)
+    return this._http.post(`/api/users/${id}/update`, user)
       .map(response => response.json())
       .toPromise();
   }
 
   toHost(id, user) {
-    return this._http.post(`/api/userHost/${id}`, user)
+    return this._http.post(`/api/users/${id}/host`, user)
       .map(response => response.json())
       .toPromise();
+  }
+
+  findOne(id){
+    return this._http.get(`/api/users/${id}`)
+    .map(response => response.json())
+    .toPromise();
   }
 
   // User property functions: create, update, delete
@@ -53,13 +59,13 @@ export class LocalApiService {
 
   // Listing functions: create, findAll, search, findAllUser, findOne, findRecent, update, delete
   createListing(listing, location) {
-    return this._http.post('/api/createListing', listing, location)
+    return this._http.post('/api/listings/create', listing, location)
       .map(response => response.json())
       .toPromise();
   }
 
   findAllListings() {
-    return this._http.get('/api/currentUser/listings')
+    return this._http.get('/api/listings')
       .map(response => response.json())
       .toPromise();
   }
@@ -71,14 +77,14 @@ export class LocalApiService {
       .toPromise();
   }
 
-  findAllUserListings() {
-    return this._http.get('/api/currentUser/hostListings')
+  findAllUserListings(id) {
+    return this._http.get(`/api/users/${id}/listings`)
       .map(response => response.json())
       .toPromise();
   }
 
   findOneListing(id) {
-    return this._http.get(`/api/currentUser/listing/${id}`)
+    return this._http.get(`/api/listings/${id}`)
       .map(response => response.json())
       .toPromise();
   }
@@ -90,51 +96,51 @@ export class LocalApiService {
   }
 
   findRecentList() {
-    return this._http.get('/api/listings/listing/recent')
+    return this._http.get('/api/listings/listings/recent')
       .map(response => response.json())
       .toPromise();
   }
 
   updateListing(id, listing) {
-    return this._http.post(`/api/currentUser/listings/${id}/update`, listing)
+    return this._http.post(`/api/listings/${id}/update`, listing)
       .map(response => response.json())
       .toPromise();
   }
 
   // Reservation functions: create, approve (host), update (guest), viewAll, viewOne, findAllListing, findAllUser, cancel (delete)
   createReserve(id, reservation) {
-    return this._http.post(`/api/currentUser/listings/${id}/createReserve`, reservation)
+    return this._http.post(`/api/reservations/create`, reservation)
       .map(response => response.json())
       .toPromise();
   }
 
   approveBooking(id, bookChange) {
-    return this._http.post(`/api/currentUser/listings/{$id}/confirmBook`, bookChange)
+    return this._http.post(`/api/reservations/{$id}/approve`, bookChange)
       .map(response => response.json())
       .toPromise();
   }
 
   updateReservation(id, reservation) {
-    return this._http.post(`/api/currentUser/reservations/{$id}/update`, reservation)
+    return this._http.post(`/api/reservations/{$id}/update`, reservation)
       .map(response => response.json())
       .toPromise();
   }
 
-  viewAllReserves() {
-    return this._http.get('/api/currentUser/reservations/all')
+  viewAllReserves(id) {
+    return this._http.get(`/api/users/${id}/reservations`)
       .map(response => response.json())
       .toPromise();
   }
 
-  viewOneReserve(id) {
-    return this._http.get(`/api/currentUser/reservations/${id}`)
+  viewOneReserve(id, reserveId) {
+    return this._http.get(`/api/users/${id}/reservations/${reserveId}`)
       .map(response => response.json())
       .toPromise();
   }
 
   // Review functions: add, findAllListing, findAllUser, delete
   addReview(id, review) {
-    return this._http.post(`/api/currentUser/listings/${id}/newReview`, review)
+    return this._http.post(`/api/listings/${id}/create`, review)
       .map(response => response.json())
       .toPromise();
   }
@@ -147,31 +153,31 @@ export class LocalApiService {
 
   // Conversation functions: create (send guest/host), viewAllGuest, viewAllHost, viewOne, delete
   sendGuestMessage(id, message) {
-    return this._http.post(`/api/currentUser/listings/${id}/guestMessage`, message)
+    return this._http.post(`/api/users/${id}/messages/create/guest`, message)
       .map(response => response.json())
       .toPromise();
   }
 
   sendHostMessage(id, message) {
-    return this._http.post(`/api/currentUser/listings/${id}/hostMessage`, message)
+    return this._http.post(`/api/users/${id}/messages/create/host`, message)
       .map(response => response.json())
       .toPromise();
   }
 
-  viewAllGuest() {
-    return this._http.get('/api/currentUser/inbox/guest')
+  viewAllGuest(id) {
+    return this._http.get(`/api/users/${id}/inbox/guest`)
       .map(response => response.json())
       .toPromise();
   }
 
-  viewAllHost() {
-    return this._http.get('/api/currentUser/inbox/host')
+  viewAllHost(id) {
+    return this._http.get(`/api/users/${id}/inbox/host`)
       .map(response => response.json())
       .toPromise();
   }
 
-  findOneMessage(id) {
-    return this._http.get(`/api/currentUser/inbox/${id}`)
+  findOneMessage(id, messageId) {
+    return this._http.get(`/api/users/${id}/inbox/messages/${messageId}`)
       .map(response => response.json())
       .toPromise();
   }

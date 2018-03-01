@@ -3,58 +3,63 @@
 =         GET REQUESTS        =
 ===============================
 Users:
-    - app.get('/api/users/current')
-    - app.get('/api/users/logout')
-    - app.get('/api/users/:id')
+    - app.get('/api/users/current') ++ / **
+    - app.get('/api/users/logout')  ++ / **
+    - app.get('/api/users/:id')     ++ / **
 
 Properties:
+
+
 Listings:
-    - app.get('/api/listings')
-    - app.get('/api/listings/landing/recent')
-    - app.get('/api/listings/listings/recent')
-    - app.get('/api/listings/:id')
+    - app.get('/api/listings')                 ++ / **
+    - app.get('/api/users/:id/listings')       ++ / **
+    - app.get('/api/listings/landing/recent')  ++ / **
+    - app.get('/api/listings/listings/recent') ++ / **
+    - app.get('/api/listings/:id')             ++ / **
 
 Reservations:
-    - app.get('/api/users/:id/reservations')
-    - app.get('/api/users/:id/reservations/:rId')
+    - app.get('/api/users/:id/reservations')      ++ / **
+    - app.get('/api/users/:id/reservations/:rId') ++ / **
 
 Reviews:
-    - app.get('/api/listings/:id/reviews')
+    - app.get('/api/listings/:id/reviews') ++ / **
 
 Conversations:
-    - app.get('/api/users/:id/inbox/guest')
-    - app.get('/api/users/:id/inbox/host')
-    - app.get('/api/users/:id/inbox/messages/:mId')
+    - app.get('/api/users/:id/inbox/guest')         ++ / **
+    - app.get('/api/users/:id/inbox/host')          ++ / **
+    - app.get('/api/users/:id/inbox/messages/:mId') ++ / **
 
 Locations:
-    - app.get('/api/locations/last')
+    - app.get('/api/locations/last') ++ / **
 
 ===============================
 =         POST REQUESTS       =
 ===============================
 Users:
-    - app.post('/api/users/register')
-    - app.post('/api/users/login')
-    - app.post('/api/users/:id/update')
-    - app.post('/api/users/:id/host')
+    - app.post('/api/users/register')   ++ / **
+    - app.post('/api/users/login')      ++ / **
+    - app.post('/api/users/:id/update') ++ / **
+    - app.post('/api/users/:id/host')   ++ / **
 
 Properties:
+
+
 Listings:
-    - app.post('/api/listings/create')
-    - app.post('/api/listings/:id/update')
-    - app.post('/api/listings/search')
+    - app.post('/api/listings/create')     ++ / **
+    - app.post('/api/listings/:id/update') ++ / **
+    - app.post('/api/listings/search')     ++ / **
 
 Reservations:
-    - app.post('/api/reservations/create')
-    - app.post('/api/reservations/:id/update')
-    - app.post('/api/reservations/:id/approve')
+    - app.post('/api/reservations/create')      ++ / **
+    - app.post('/api/reservations/:id/update')  ++ / **
+    - app.post('/api/reservations/:id/approve') ++ / **
 
 Reviews:
-    - app.post('/api/listings/:id/reviews/create')
+    - app.post('/api/listings/:id/reviews/create') ++ / **
 
 Conversations:
-    - app.post('/api/users/:id/messages/create/guest')
-    - app.post('/api/users/:id/messages/create/host')
+    - app.post('/api/users/:id/messages/create/guest') ++ / **
+    - app.post('/api/users/:id/messages/create/host')  ++ / **
 
 Locations:
-    - app.post('/api/locations/create')
+    - app.post('/api/locations/create') ++ / **

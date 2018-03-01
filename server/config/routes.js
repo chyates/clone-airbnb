@@ -23,23 +23,27 @@ module.exports = function (app) {
     // ----------------
 
     // Users
-    app.get('/api/showUser', function(req, res){
+    app.get('/api/users/current', function(req, res){
         users.current(req, res);
     })
 
-    app.get('/api/logout', function(req, res){
+    app.get('/api/users/logout', function(req, res){
         users.logout(req, res);
+    })
+
+    app.get('/api/users/:id', function(req, res) {
+        // users.findOne(req, res); CREATE THIS FUNCTION
     })
 
     // User Properties
 
 
     // Listings
-    app.get('/api/currentUser/listings', function(req, res){
+    app.get('/api/listings', function(req, res){
         listings.findAll(req, res);
     })
 
-    app.get('/api/currentUser/hostListings', function(req, res){
+    app.get('/api/users/:id/listings', function(req, res){
         listings.findAllUser(req, res);
     })
 
@@ -47,20 +51,20 @@ module.exports = function (app) {
         listings.findRecentLanding(req, res);
     })
 
-    app.get('/api/listings/listing/recent', function(req, res){
+    app.get('/api/listings/listings/recent', function(req, res){
         listings.findRecentListing(req, res);
     })
 
-    app.get('/api/currentUser/listing/:id', function(req, res) {
+    app.get('/api/listings/:id', function(req, res) {
         listings.findOne(req, res);
     })
 
     // Reservations
-    app.get('/api/currentUser/reservations/all', function(req, res){
+    app.get('/api/users/:id/reservations', function(req, res){
         reservations.show2(req, res);
     })
 
-    app.get('/api/currentUser/reservations/:id', function(req, res) {
+    app.get('/api/users/:id/reservations/:rId', function(req, res) {
         reservations.find(req, res);
     })  
     
@@ -70,15 +74,15 @@ module.exports = function (app) {
     })
 
     // Conversations
-    app.get('/api/currentUser/inbox/guest', function(req, res){
+    app.get('/api/users/:id/inbox/guest', function(req, res){
         conversations.showGuest(req, res);
     })
     
-    app.get('/api/currentUser/inbox/host', function(req, res) {
+    app.get('/api/users/:id/inbox/host', function(req, res) {
         conversations.showHost(req, res);
     })
     
-    app.get('/api/currentUser/inbox/:id', function(req, res){
+    app.get('/api/users/:id/inbox/messages/:mId', function(req, res){
         conversations.find(req, res);
     })
 
@@ -92,19 +96,19 @@ module.exports = function (app) {
     // -----------------
 
     // Users
-    app.post('/api/register', function(req, res) {
+    app.post('/api/users/register', function(req, res) {
         users.register(req, res);
     })
 
-    app.post('/api/login', function(req, res){
+    app.post('/api/users/login', function(req, res){
         users.login(req, res);
     })
 
-    app.post('/api/updateUser/:id', function(req, res){
+    app.post('/api/users/:id/update', function(req, res){
         users.update(req, res);
     })
 
-    app.post('/api/userHost/:id', function(req, res){
+    app.post('/api/users/:id/host', function(req, res){
         users.regHost(req, res);
     })
 
@@ -112,11 +116,11 @@ module.exports = function (app) {
     
 
     // Listings
-    app.post('/api/createListing', function(req, res){
+    app.post('/api/listings/create', function(req, res){
         listings.create(req, res);
     })
 
-    app.post('/api/currentUser/listings/:id/update', function(req, res){
+    app.post('/api/listings/:id/update', function(req, res){
         listings.update(req, res);
     })
 
@@ -125,29 +129,29 @@ module.exports = function (app) {
     })
 
     // Reservations
-    app.post('/api/currentUser/listings/:id/createReserve', function(req, res) {
+    app.post('/api/reservations/create', function(req, res) {
         reservations.create(req, res);
     })
 
-    app.post('/api/currentUser/listings/:id/approve', function(req, res) {
+    app.post('/api/reservations/:id/approve', function(req, res) {
         reservations.approve(req, res);
     })
 
-    app.post('/api/currentUser/reservations/:id/update', function (req, res) {
+    app.post('/api/reservations/:id/update', function (req, res) {
         reservations.update(req, res);
     })
 
     // Reviews
-    app.post('/api/currentUser/listings/:id/newReview', function(req, res) {
+    app.post('/api/listings/:id/reviews/create', function(req, res) {
         reviews.create(req, res);
     })
 
     // Conversations
-    app.post('/api/currentUser/listings/:id/guestMessage', function(req, res){
+    app.post('/api/users/:id/messages/create/guest', function(req, res){
         conversations.createAsGuest(req, res);
     })
 
-    app.post('/api/currentUser/listings/:id/hostMessage', function(req, res){
+    app.post('/api/users/:id/messages/create/host', function(req, res){
         conversations.createAsGuest(req, res);
     })
 
