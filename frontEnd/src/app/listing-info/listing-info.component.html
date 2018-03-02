@@ -1,84 +1,134 @@
-<div class="listing-header">
-    <img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
-    <form id="top-search">
-      <input type="text" name="search" placeholder="Search">
-      <input id="search-submit" type="submit" value="search">
-    </form>
-    <p id="quick-links"><a [routerLink]="['/account']">{{ currentUser.firstName }}'s Account</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
-  </div>
-
-  <div class="container">
-    <img id="listing-photo" src="{{thisListing.image}}">
-
-    <div id="main-info">
-      <div id="main-content-listing">
-        <p><a>Overview</a> &#9679; <a>Reviews</a> &#9679; <a>Location</a></p>
-        <h2>Title: {{ thisListing.title }}</h2>
-        <p>{{ thisListing.description }}</p>
-        <hr>
-        <div *ngFor="let r of allReviews; let idx=index">
-          <h3>Reviews:</h3>
-          <h3>{{ r.title }}</h3>
-          <p>"{{ r.content }}"</p>
-          <a id="review-add" (click)="toggleReview()">Add Review</a>
+<div id="nav-container" class="container-fluid">
+  <nav id="top-nav" class="navbar navbar-toggleable navbar-light">
+    <div class="justify-content-between collapse navbar-collapse">
+      <div class="row">
+        <div id="header-img-div" class="col my-auto">
+          <a class="navbar-brand" href="#">
+            <img class="img-fluid" id="header-logo" alt="Brand" src="assets/airbnbLogo.png">
+          </a>
         </div>
-        <hr>
-        <h3>Location: </h3>
-        <p>{{ thisListing.location }}</p>
+        <div class="col my-auto" id="nav-form-search">
+          <form id="top-search-form" class="align-middle form-inline">
+            <div class="form-row">
+              <input id="search-field" type="text" class="form-control" name="home-search" placeholder="Search">
+              <button id="listing-search" class="btn btn-outline-success" type="submit" style="display: none;">Search</button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div id="listings-instant-book">
-        <h3>{{ thisListing.price | currency:'USD':true }}/night</h3>
-        <hr>
-        <form class="instant-book-form" (submit)="bookTrip()">
-          <div id="check-in">
-            <span>Check in:</span><br><input type="date" 
-            name="startDate"
-            required
-            [(ngModel)]="reservation.startDate"
-            #startDate = "ngModel" 
-            placeholder="mm/dd/yyyy"><br>
+      <div class="col-3">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" [routerLink]="['/account']">Your Account</a>
+          <a class="nav-item nav-link" [routerLink]="['/listings']">Listings</a>
+          <a class="nav-item nav-link">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <hr>
+</div>
+
+<img id="test-img" class="img-fluid" src="assets/testHouse2.jpg">
+<div id="listing-info-container" class="container container-fluid">
+  <div id="main-info" class="row">
+    <div id="main-content-listing" class="col-md">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="row">
+            <h2>Beach House</h2>
           </div>
+          <div class="row">
+            <i class="fas fa-users"></i><div class="font-weight-light"> Guests </div><i class="fas fa-bed"></i><div class="font-weight-light"> Beds </div><i class="fas fa-home"></i><div class="font-weight-light"> Rooms </div><i class="fas fa-bath"></i><div class="font-weight-light"> Baths </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <img id="title-col-img" class="img-fluid" src="assets/blankUser.png">
+        </div>
+      </div>
+      <div class="row">
+        <p>Beautiful beach house in Southern California</p>
+      </div>
+      <hr>
+      <div class="row">
+        <h3>Reviews:</h3>
+      </div>
+      <div class="row">
+        <h3>Review title</h3>
+      </div>
+      <div class="row">
+        <p>Boy this sure was a great place to stay</p>
+      </div>
+      <div class="row">
+        <p>Boy this sure was a great place to stay</p>
+      </div>
+      <div class="row">
+        <p>Boy this sure was a great place to stay</p>
+      </div>
+      <div class="row">
+        <p>Boy this sure was a great place to stay</p>
+      </div>
+      <div class="row">
+        <p>Boy this sure was a great place to stay</p>
+      </div>
+      <div class="row">
+        <p>Boy this sure was a great place to stay</p>
+      </div>
+      <div class="row">
+        <p>Boy this sure was a great place to stay</p>
+      </div>
+      <div class="row">
+        <p>Boy this sure was a great place to stay</p>
+      </div>
+      <hr>
+      <div class="row">
+        <h3>Location: </h3>
+      </div>
+      <div class="row">
+        <p>Southern California</p>
+      </div>
+    </div>
+    <div id="listings-instant-book" class="col-md">
+      <h3>$99 <span class="font-weight-light">per night</span></h3>
+      <hr>
+      <form class="instant-book-form" #reserveForm="ngForm" (submit)="bookTrip()">
+        <label>Dates</label>
+          <div id="check-in-out" class="row">
+            <input type="date" class="col-sm form-control" name="startDate" required [(ngModel)]="reservation.startDate" #startDate="ngModel"
+              placeholder="Check in">
+            <input type="date" class="col-sm form-control" name="endDate" required [(ngModel)]="reservation.endDate" #endDate="ngModel" placeholder="Check out">
+        </div>
 
-          <div id="check-out">
-            <span>Check out:</span><br><input type="date" 
-            name="endDate"
-            required
-            [(ngModel)]="reservation.endDate"
-            #endDate = "ngModel"
-            placeholder="mm/dd/yyyy"><br>
-          </div><br><br>
-
-          <div id="guest-select">
-            Guests: <br><select id="guest-number" 
-            name="amtGuests"
-            required
-            [(ngModel)]="reservation.amtGuests"
-            #amtGuests = "ngModel">
-              <option value="1">1 guest</option>
-              <option value="2">2 guests</option>
-              <option value="3">3 guests</option>
-              <option value="4">4 guests</option>
-            </select>
-          </div> <br>
+        <div id="guest-select" class="form-group-row">
+          <label for="guests">Guests</label>
+          <select id="guest-number" class="form-control" name="amtGuests" required [(ngModel)]="reservation.amtGuests" #amtGuests="ngModel">
+            <option value="1">1 guest</option>
+            <option value="2">2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+          </select>
+        </div>
+        <div class="form-group-row">
           <input id="form-submit" type="submit" value="Book">
-        </form>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="footer" class="jumbotron bg-light text-black mt-4">
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="#/about">About Us</a>
+        </div>
+        <div class="col-md-3">
+          <a href="#/careers">Careers</a>
+        </div>
+        <div class="col-md-3">
+          <a href="#/policies">Policies</a>
+        </div>
+        <div class="col-md-3">
+          <a href="#/help">Help</a>
+        </div>
       </div>
     </div>
   </div>
-
-  <div *ngIf="addReview === true">
-    <form (submit)="createReview()">
-      Title: <input type="text"
-      name="title"
-      required
-      [(ngModel)]="review.title"
-      #title = "ngModel"><br><br>
-      Content: <br><textarea cols="40" rows="7"
-      name="content"
-      required
-      [(ngModel)]="review.content"
-      #content = "ngModel"
-      placeholder="How was your experience?"></textarea><br><br>
-      <input type="submit" value="Leave review">
-    </form>
-  </div>
+</div>

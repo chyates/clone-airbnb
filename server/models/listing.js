@@ -7,6 +7,7 @@ var ListingSchema = new mongoose.Schema({
     roomType: { type: String, required: true },
     price: { type: Number, required: true },
     amountBeds: { type: Number, required: true, min: 1 },
+    amountBaths: { type: Number, required: true, min: 1 },
     rating: { type: Number },
     image: { type: String },
     // bookStatus: { type: Boolean },
