@@ -31,7 +31,7 @@
 <img id="test-img" class="img-fluid" src="assets/testHouse2.jpg">
 <div id="listing-info-container" class="container container-fluid">
   <div id="main-info" class="row">
-    <div id="main-content-listing" class="col-md">
+    <div id="main-content-listing" class="col-md-8">
       <div class="row">
         <div class="col-sm-8">
           <div class="row">
@@ -48,7 +48,6 @@
       <div class="row">
         <p>Beautiful beach house in Southern California</p>
       </div>
-      <hr>
       <div class="row">
         <h3>Reviews:</h3>
       </div>
@@ -79,7 +78,6 @@
       <div class="row">
         <p>Boy this sure was a great place to stay</p>
       </div>
-      <hr>
       <div class="row">
         <h3>Location: </h3>
       </div>
@@ -87,30 +85,32 @@
         <p>Southern California</p>
       </div>
     </div>
-    <div id="listings-instant-book" class="col-md">
-      <h3>$99 <span class="font-weight-light">per night</span></h3>
-      <hr>
-      <form class="instant-book-form" #reserveForm="ngForm" (submit)="bookTrip()">
-        <label>Dates</label>
+    <div id="listings-instant-book" class="col-md-4">
+      <div id="instant-book-form" class="container">
+        <h3>$99 <span class="font-weight-light">per night</span></h3>
+        <hr>
+        <form #reserveForm="ngForm" (submit)="bookTrip()">
+          <label>Dates</label>
           <div id="check-in-out" class="row">
-            <input type="date" class="col-sm form-control" name="startDate" required [(ngModel)]="reservation.startDate" #startDate="ngModel"
-              placeholder="Check in">
-            <input type="date" class="col-sm form-control" name="endDate" required [(ngModel)]="reservation.endDate" #endDate="ngModel" placeholder="Check out">
-        </div>
-
-        <div id="guest-select" class="form-group-row">
+            <input type="date" class="col-sm-6 form-control" name="startDate" required [(ngModel)]="reservation.startDate" #startDate="ngModel"
+            placeholder="Check in">
+            <input type="date" class="col-sm-6 form-control" name="endDate" required [(ngModel)]="reservation.endDate" #endDate="ngModel" placeholder="Check out">
+          </div>
+          
           <label for="guests">Guests</label>
-          <select id="guest-number" class="form-control" name="amtGuests" required [(ngModel)]="reservation.amtGuests" #amtGuests="ngModel">
-            <option value="1">1 guest</option>
-            <option value="2">2 guests</option>
-            <option value="3">3 guests</option>
-            <option value="4">4 guests</option>
-          </select>
-        </div>
-        <div class="form-group-row">
-          <input id="form-submit" type="submit" value="Book">
-        </div>
-      </form>
+          <div id="guest-select" class="row">
+            <select id="guest-number" class="form-control" name="amtGuests" required [(ngModel)]="reservation.amtGuests" #amtGuests="ngModel">
+              <option value="1">1 guest</option>
+              <option value="2">2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+            </select>
+          </div>
+          <div class="row">
+            <input id="form-submit" type="submit" class="btn btn-primary btn-lg btn-block" value="Book">
+          </div>
+        </form>
+      </div>
     </div>
   </div>
   <div id="footer" class="jumbotron bg-light text-black mt-4">

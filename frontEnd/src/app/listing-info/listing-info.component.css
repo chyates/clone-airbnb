@@ -1,15 +1,59 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans|PT+Sans|Work+Sans');
 
 #listings-instant-book {
-    border: 1px solid var(--secondary);
+    /* border: 1px solid var(--secondary); */
     font-family: 'PT Sans', sans-serif;
     text-decoration: none;
 }
 
 #instant-book-form {
-    /* border: 1px solid var(--secondary); */
+    border: 1px solid var(--secondary);
+    padding: 1rem;
 }
 
+#instant-book-form select {
+    margin: 0 1rem;
+    border-radius: 0;
+}
+
+#instant-book-form input[type="date"] {
+    border-radius: 0;
+}
+
+#instant-book-form label {
+    font-size: 12px;
+    margin: 0;
+}
+
+#check-in-out {
+    /* margin-right: 1rem;
+    margin-left: 1rem; */
+    padding: 1rem;
+    border-radius: 0;
+}
+
+/* ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+    color: transparent;
+} */
+
+input::-webkit-datetime-edit{ color: transparent; }
+
+.btn-register {
+    background-color: var(--coral);
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    border-color: var(--coral);
+}
+
+#form-submit {
+    margin: 1rem;
+}
 
 #test-img {
     width: 100%;
