@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|PT+Sans|Work+Sans');
+
+#filter-messages select {
+    border-radius: 0;
+    font-size: 14px;
+}
+
+#msg-sender-img {
+    width: 40px;
+    height: 40px;
+}
+
+#inbox {
+    border: 1px solid var(--secondary);
+    font-size: 14px;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+#inbox p {
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
+}

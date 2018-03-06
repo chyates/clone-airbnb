@@ -22,6 +22,7 @@ import { PublicProfileComponent } from './public-profile/public-profile.componen
 import { LocalApiService } from './local-api.service';
 import { ListingFormComponent } from './listing-form/listing-form.component';
 import { BookReserveComponent } from './book-reserve/book-reserve.component';
+import { ConversationComponent } from './conversation/conversation.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BookReserveComponent } from './book-reserve/book-reserve.component';
     HostComponent,
     PublicProfileComponent,
     ListingFormComponent,
-    BookReserveComponent
+    BookReserveComponent,
+    ConversationComponent
   ],
   imports: [
     BrowserModule,

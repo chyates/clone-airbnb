@@ -126,12 +126,8 @@
   padding: 0;
 }
 
-#top-search-form input {
+input[type="text"] {
   border-radius: 0;
-}
-
-hr {
-  margin: 0rem 0rem 2rem 0rem;
 }
 
 ::-webkit-input-placeholder {

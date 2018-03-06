@@ -1,3 +1,30 @@
-<p>
-  dash-reserves works!
-</p>
+<div class="container-fluid">
+  <h3>Past Trips</h3>
+  <div class="card">
+    <img class="card-img-top ing-fluid" src="assets/houseFront.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Start to end date, #guests</h5>
+      <p class="card-text">Listing title</p>
+      <a>
+        <button id="reserve-review-button" type="button" [routerLink]="['/profile']" class="btn btn-outline-primary btn-lg btn-block">Review</button>
+      </a>
+      <a>
+        <button id="reserve-receipt-button" type="button" [routerLink]="['/profile']" class="btn btn-outline-primary btn-lg btn-block">View Receipt</button>
+      </a>
+      <a>
+        <button id="reserve-money-button" type="button" [routerLink]="['/profile']" class="btn btn-outline-primary btn-lg btn-block">Send or request money</button>
+      </a>
+    </div>
+  </div>
+  <h3>Upcoming Trips</h3>
+  <div class="card">
+    <img class="card-img-top ing-fluid" src="assets/houseFront.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Start to end date, #guests</h5>
+      <p class="card-text">Listing title</p>
+      <a>
+        <button id="reserve-review-button" type="button" [routerLink]="['/profile']" class="btn btn-outline-primary btn-lg btn-block">Contact Host</button>
+      </a>
+    </div>
+  </div>
+</div>

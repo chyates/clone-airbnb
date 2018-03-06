@@ -1,0 +1,12 @@
+.card {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    width: 20rem;
+    border-radius: 0;
+}
+
+#reserve-review-button, #reserve-receipt-button, #reserve-money-button {
+    border-color: white;
+    border-radius: 4px;
+}

@@ -1,3 +1,43 @@
-<p>
-  dash-messages works!
-</p>
+<div class="container-fluid">
+  <div *ngIf="viewInbox" class="row">
+    <form id="filter-messages" class="form-inline" (submit)="filter()">
+      <div class="row">
+        <div class="col">
+          <select class="form-control" name="conversation">
+            <option selected="selected">All messages (count)</option>
+            <option value="unread">Unread</option>
+            <option value="archived">Archived</option>
+          </select>
+        </div>
+        <div class="col">
+          <button type="submit" tabindex="8" class="btn btn-outline-primary">Filter</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="viewInbox" id="inbox" class="row">
+    <div class="col-sm-2">
+      <img id="msg-sender-img" class="img-fluid" src="assets/blankUser.png">
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <p>Sender</p>
+      </div>
+      <div class="row">
+        <p>Date sent</p>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="row">
+        <p><a [routerLink]="" (click)="switchConversation()">Message content (truncated?)</a></p>
+      </div>
+      <div class="row">
+        <p>Reserve details</p>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <p>Reservation rate</p>
+    </div>
+  </div>
+  <app-conversation *ngIf="viewConversation"></app-conversation>
+</div>

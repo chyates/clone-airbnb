@@ -12,4 +12,12 @@ export class DashMessagesComponent implements OnInit {
   ngOnInit() {
   }
 
+  viewInbox = true;
+  viewConversation = false;
+
+  switchConversation(){
+    this.viewConversation = true;
+    this.viewInbox = false;
+  }
+
 }

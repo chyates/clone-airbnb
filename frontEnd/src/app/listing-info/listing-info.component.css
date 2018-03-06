@@ -53,6 +53,17 @@ input::-webkit-datetime-edit{ color: transparent; }
 
 #form-submit {
     margin: 1rem;
+    background-color: var(--coral);
+    color: white;
+    font-size: 20px;
+}
+
+#listing-search-submit {
+    display: none;
+}
+
+#review-div {
+    padding: 0;
 }
 
 #test-img {
@@ -73,6 +84,11 @@ h2, h3, p {
 #title-col-img {
     width: 50px;
     height: 50px;
+}
+
+#review-user-img {
+    width: 40px;
+    height: 40px;
 }
 
 .font-weight-light {

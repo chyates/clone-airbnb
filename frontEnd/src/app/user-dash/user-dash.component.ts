@@ -21,6 +21,7 @@ export class UserDashComponent implements OnInit {
   viewReserves = false;
   viewListings = false;
   viewMessages = false;
+  viewConversation = false;
 
   location;
   listing = new Listing();
@@ -63,6 +64,10 @@ export class UserDashComponent implements OnInit {
     this.viewProfile = false;
     this.viewListings = false;
     this.viewReserves = false;
+  }
+
+  switchConversation() {
+    
   }
 
   // createListing(){

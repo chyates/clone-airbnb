@@ -8,6 +8,7 @@ var ConversationSchema = new mongoose.Schema({
     messageList: [{
         subject: { type: String },
         content: { type: String },
+        readStatus: { type: Boolean, default: false },
         sender: { type: Schema.Types.ObjectId },
         recipient: { type: Schema.Types.ObjectId },
         sentAt: { type: Date, default: Date.now() }

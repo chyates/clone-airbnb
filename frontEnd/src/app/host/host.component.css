@@ -18,6 +18,11 @@
     border-color: var(--coral);
 }
 
+#loc-form select {
+    /* border-radius: 0; */
+    font-size: 14px;
+}
+
 #location-submit:hover {
     color: #fff;
     background-color: var(--coral);
@@ -40,15 +45,3 @@
     font-weight: bold;
     margin: 0;
 }
-/* 
-::-webkit-input-placeholder {
-    font-size: 13px!important;
-}
-
-:-moz-placeholder { Firefox 18- 
-    font-size: 13px!important;
-}
-
-::-moz-placeholder {  /* Firefox 19+ 
-    font-size: 13px!important;
-}*/

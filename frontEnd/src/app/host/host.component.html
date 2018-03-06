@@ -49,6 +49,7 @@
             
             <div class="form-group row">
                 <select class="form-control col-sm offset-sm-3" name="usState" required [(ngModel)]="nLoc.usState" #usState="ngModel">
+                  <!-- <option selected="selected">Select a state</option> -->
                   <option *ngFor="let eachState of allStates" value="{{ eachState }}">{{ eachState }}</option>
                 </select>
             </div>

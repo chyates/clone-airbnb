@@ -114,6 +114,10 @@
     border-color: var(--navy);
 }
 
+hr {
+    margin: 0rem 0rem 2rem 0rem;
+}
+
 /* recent listings CSS */
 #where, #guests {
     height: 49px;
