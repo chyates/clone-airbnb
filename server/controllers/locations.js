@@ -4,16 +4,18 @@ var Listing = mongoose.model('Listing');
 
 module.exports = {
     create: function(req, res){
+        console.log("Create location function", req.body);
         var location = new Location({
             city: req.body.city,
-            state: req.body.state,
+            state: req.body.usState,
             zipCode: req.body.zipCode
         });
         location.listings = [];
-        newLocation.save(function(err, location){
+        location.save(function(err, location){
             if(err){
                 res.json({ error: err });
             } else {
+                console.log("New location", location);
                 res.json({ location: location });
             }
         });

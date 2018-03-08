@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'homes', component: LandingPageComponent },
   { path: 'listings', component: ListingComponent },
   { path: 'oneListing', component: ListingInfoComponent },
-  { path: 'account', component: UserDashComponent },
+  { path: 'account/:id', component: UserDashComponent },
   { path: 'host', component: HostComponent },
   { path: 'profile', component: PublicProfileComponent }
 ];

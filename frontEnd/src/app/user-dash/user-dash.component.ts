@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalApiService } from '../local-api.service';
 import { Router } from '@angular/router';
 import { Listing } from '../listing';
+import { Location } from '../location';
 import { User } from '../user';
 import { Reservation } from '../reservation';
 
@@ -23,7 +24,7 @@ export class UserDashComponent implements OnInit {
   viewMessages = false;
   viewConversation = false;
 
-  location;
+  location = new Location();
   listing = new Listing();
   listings = [];
   searchListings = [];
@@ -34,6 +35,7 @@ export class UserDashComponent implements OnInit {
   currentUser = new User();
 
   ngOnInit() {
+    this.getCurrentUser();
   }
   
   switchListing(){
@@ -66,10 +68,6 @@ export class UserDashComponent implements OnInit {
     this.viewReserves = false;
   }
 
-  switchConversation() {
-    
-  }
-
   // createListing(){
   //   return this._localService.createListing(this.listing)
   //   .then(data => {
@@ -88,6 +86,11 @@ export class UserDashComponent implements OnInit {
         this.currentUser = data.user;
       }
     })
+  }
+
+  logout() {
+    this._localService.logoutUser()
+    .then(data => this._router.navigateByUrl('/'));
   }
 
   // searchByLocation(){

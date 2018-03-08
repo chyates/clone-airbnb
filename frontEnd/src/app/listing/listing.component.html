@@ -18,9 +18,9 @@
         </div>
       <div class="col-3">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" [routerLink]="['/account']">Your Account</a>
+          <a class="nav-item nav-link" [routerLink]="['/account', currentUser._id]">{{ currentUser.firstName }}'s Account</a>
           <a class="nav-item nav-link" [routerLink]="['/listings']">Listings</a>
-          <a class="nav-item nav-link">Logout</a>
+          <a class="nav-item nav-link" [routerLink]="" (click)="logout()">Logout</a>
         </div>
       </div>
     </div>
@@ -35,8 +35,8 @@
       <div id="recent-listings" class="col-md" *ngFor="let l of recentListings">
         <img class="img img-fluid img-thumbnail" id="recent-result-image" src="{{ l.image }}">
         <h4><a [routerLink]="[l._id]">{{ l.title }}</a></h4>
-        <li>{{ l.price | currency:'USD':t
-        <li>{{ l.roomT
+        <li>{{ l.price | currency:'USD':true }}</li>
+        <li>{{ l.roomType }}</li>
       </div>
     </div>
     <hr>

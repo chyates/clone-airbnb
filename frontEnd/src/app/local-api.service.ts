@@ -58,8 +58,9 @@ export class LocalApiService {
   //   /api/users/{id}/props/delete
 
   // Listing functions: create, findAll, search, findAllUser, findOne, findRecent, update, delete
-  createListing(listing, location) {
-    return this._http.post('/api/listings/create', listing, location)
+  createListing(listing) {
+    console.log("Hit service! Creating listing")
+    return this._http.post(`/api/listings/create`, listing)
       .map(response => response.json())
       .toPromise();
   }

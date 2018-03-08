@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalApiService } from '../local-api.service';
 import { Listing } from '../listing';
+import { User } from '../user';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -18,25 +19,26 @@ export class ListingComponent implements OnInit {
 
   ngOnInit() {
     // this._route.params.subscribe(params => params['id']);
-    this._route.params.subscribe(params => this.currentListing(params['id']));
+    // this._route.params.subscribe(params => this.currentListing(params['id']));
+    this.getCurrentUser();
   }
 
 
   hostId;
   allListings;
-  currentUser;
+  currentUser = new User();
   thisListing;
   searchListings = [];
   listing = new Listing();
   recentListings;
 
-  currentListing(id){
-    this._localService.findOneListing(id)
-    .then(data => {
-      this.hostId = data.listing._host,
-      this.thisListing = data.listing
-    });
-  }
+  // currentListing(id){
+  //   this._localService.findOneListing(id)
+  //   .then(data => {
+  //     this.hostId = data.listing._host,
+  //     this.thisListing = data.listing
+  //   });
+  // }
 
   
   getCurrentUser(){
@@ -64,5 +66,10 @@ export class ListingComponent implements OnInit {
   getRecentListings(){
     this._localService.findRecentList()
     .then(data => this.recentListings = data.listings);
+  }
+
+  logout() {
+    this._localService.logoutUser()
+    .then(data => this._router.navigateByUrl('/'));
   }
 }

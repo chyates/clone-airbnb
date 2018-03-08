@@ -7,7 +7,7 @@
       <div id="listing-card" class="card">
         <h5 class="card-header bg-grey">Required information</h5>
         <div class="card-body">
-          <form id="listing-form" #listingForm="ngForm" (submit)="createListing()">
+          <form id="listing-form" #listingForm="ngForm" (submit)="validateListing()">
             <div class="form-group row">
               <label for="title" class="text-right col-sm-3 col-form-label">Listing Title</label>
               <input type="text" class="form-control col-sm-9"
@@ -42,6 +42,17 @@
           <span class="text-info" *ngIf='!roomType.valid && roomType.touched'>You must enter a room type</span>
           
           <div class="form-group row">
+            <label for="image" class="text-right col-sm-3 col-form-label">Enter an image URL</label>
+            <input class="form-control col-sm-9" type="text"
+            name="image"
+            required
+            [(ngModel)]="thisListing.image"
+            #image="ngModel"
+            placeholder="Enter a URL">
+        </div>
+        <span class="text-info" *ngIf='!image.valid && image.touched'>You must enter a URL</span>
+          
+          <div class="form-group row">
             <label for="price" class="text-right col-sm-3 col-form-label">Price per night</label>
             <input type="number" 
             class="form-control col-sm-9" 
@@ -60,10 +71,10 @@
             [(ngModel)]="thisListing.amountBeds"
             #amountBeds="ngModel" 
             placeholder="Add number of beds">
-            <!-- <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx"> -->
           </div>
           <span class="text-info" *ngIf='!amountBeds.valid && amountBeds.touched'>You must provide at least 1 bed.</span>
-          <input type="hidden" name="location" value="{{ addedLoc._id }}">
+
+          <!-- <input type="hidden" name="location" value="{{ locID }}" [(ngModel)]="thisListing.location" #location="ngModel"> -->
           
           <div class="form-group">
             <div class="col-sm-4">

@@ -5,46 +5,76 @@
       <form id="user-update-form" #updateForm="ngForm" (submit)="validateProfile()">
         <div class="form-group row">
           <label for="firstName" class="text-right col-sm-3 col-form-label">First name</label>
-          <input type="text" class="form-control col-sm-9" name="firstName" required minlength="2" [(ngModel)]="upUser.firstName" #firstName="ngModel"
-            placeholder="Update your first name">
+          <input type="text" class="form-control col-sm-9"
+          name="firstName"
+          required
+          minlength="2"
+          [(ngModel)]="upUser.firstName"
+          #firstName="ngModel"
+          value="{{ currentUser.firstName }}">
         </div>
         <span class="text-info" *ngIf='!firstName.valid && firstName.touched'>First name is required and must be at least 2 characters</span>
 
         <div class="form-group row">
           <label for="lastName" class="text-right col-sm-3 col-form-label">Last name</label>
-          <input type="text" class="form-control col-sm-9" name="lastName" required minlength="2" [(ngModel)]="upUser.lastName" #lastName="ngModel"
-            placeholder="Update your last name">
+          <input type="text" class="form-control col-sm-9"
+          name="lastName"
+          required
+          minlength="2"
+          [(ngModel)]="upUser.lastName"
+          #lastName="ngModel"
+          value="{{ currentUser.lastName }}">
         </div>
         <span class="text-info" *ngIf='!lastName.valid && lastName.touched'>Last name is required and must be at least 2 characters</span>
 
         <div class="form-group row">
           <label for="email" class="text-right col-sm-3 col-form-label">Email</label>
-          <input class="form-control col-sm-9" type="email" name="email" required minlength="2" [(ngModel)]="upUser.email" #email="ngModel"
-          placeholder="Email address">
+          <input class="form-control col-sm-9"
+          type="email"
+          name="email"
+          required
+          minlength="2"
+          [(ngModel)]="upUser.email"
+          #email="ngModel"
+          value="{{ currentUser.email }}">
         </div>
         <span class="text-info" *ngIf='!email.valid && email.touched'>Email is required and must be at least 2 characters</span>
 
         <div class="form-group row">
           <label for="password" class="text-right col-sm-3 col-form-label">Change password</label>
-          <input class="form-control col-sm-9" type="password" name="password" required minlength="8" [(ngModel)]="upUser.password" #password="ngModel"
-            placeholder="Choose a password">
+          <input class="form-control col-sm-9" type="password"
+          name="password"
+          required
+          minlength="8"
+          [(ngModel)]="upUser.password"
+          #password="ngModel"
+          placeholder="Choose a password">
         </div>
         <span class="text-info" *ngIf='!password.valid && password.touched'>Password is required and must be at least 2 characters</span>
 
         <div class="form-group row">
           <label for="confirmPassword" class="text-right col-sm-3 col-form-label">Verify new password</label>
-          <input class="form-control col-sm-9" type="password" name="confirmPassword" required minlength="8" [(ngModel)]="upUser.confirmPassword"
-            #confirmPassword="ngModel" placeholder="Verify password">
+          <input class="form-control col-sm-9" type="password"
+          name="confirmPassword"
+          required
+          minlength="8"
+          [(ngModel)]="upUser.confirmPassword"
+          #confirmPassword="ngModel" placeholder="Verify password">
         </div>
         <span class="text-info" *ngIf='!confirmPassword.valid && confirmPassword.touched'>Password is required and must be at least 8 characters</span>
-        <span class="text-info" *ngIf='confirmPassword != password && confirmPassword.touched'>Passwords must match</span>
+        <span class="text-info" *ngIf='upUser.confirmPassword !== upUser.password && confirmPassword.touched'>Passwords must match</span>
 
-        <div class="form-group row">
+        <!-- <div class="form-group row">
           <label for="phoneNumber" class="text-right col-sm-3 col-form-label">Phone number</label>
-          <input class="form-control col-sm-9" type="tel" name="phoneNumber" pattern="[0-9]*" minlength="9" [(ngModel)]="upUser.phoneNumber"
-            #confirmPassword="ngModel" placeholder="Add phone number">
+          <input class="form-control col-sm-9" type="tel"
+          name="phoneNumber"
+          pattern="[0-9]*"
+          minlength="9"
+          [(ngModel)]="upUser.phoneNumber"
+          #confirmPassword="ngModel" placeholder="Add phone number">
         </div>
-        <span class="text-info" *ngIf='!phoneNumber.valid && phoneNumber.touched'>Phone numbers must be at least 9 characters and consist only of digits</span>
+        <span class="text-info" *ngIf='!phoneNumber.valid && phoneNumber.touched'>Phone numbers must be at least 9 characters and consist only of digits</span> -->
+        <input type="hidden" name="currentId" value="{{ currUserId }}">
 
         <div class="form-group">
           <div class="col-sm-4">

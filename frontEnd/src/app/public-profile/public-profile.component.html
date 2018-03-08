@@ -18,7 +18,7 @@
       </div>
       <div class="col-3">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" [routerLink]="['/account']">Your Account</a>
+          <a class="nav-item nav-link" [routerLink]="['/account', currentUser._id]">Your Account</a>
           <a class="nav-item nav-link" [routerLink]="['/listings']">Listings</a>
           <a class="nav-item nav-link">Logout</a>
         </div>

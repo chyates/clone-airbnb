@@ -199,7 +199,7 @@ module.exports = {
         User.find({ email: req.body.email }, function(error, user) {
             if (user.length >= 1) {
                 res.json({
-                    error: 'An account with that email already exists.  Please use a different email.',
+                    regEmailError: 'An account with that email already exists.  Please use a different email.',
                     loggedIn: false
                 });
             } else {
@@ -216,10 +216,10 @@ module.exports = {
                 newUser.conversations = [];
                 newUser.save(function(err, user) {
                     if (err) {
-                        res.json({error: err, loggedIn: false});
+                        res.json({ error: err, loggedIn: false});
                     } else {
                         req.session.user = newUser;
-                        res.json({user: newUser, loggedIn: true});
+                        res.json({ user: newUser, loggedIn: true});
                     }
                 });
             }
@@ -253,11 +253,13 @@ module.exports = {
     update: function (req, res) {
         User.findById(req.params.id, function (err, user) {
             if (err) {
+                console.log("Error", err);
             } else {
                 user.firstName = req.body.firstName;
                 user.lastName = req.body.lastName;
                 user.email = req.body.email;
-                user.phoneNum = req.body.phoneNum;
+                user.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8));
+                // user.phoneNum = req.body.phoneNum;
                 user.save(function (err, user) {
                     if (err) {
                         res.json({ error: "Update attempt unsuccessful." });
@@ -274,14 +276,18 @@ module.exports = {
             if (err) {
                 res.json({ error: err });
             } else {
-                user.userLevel = true;
-                user.save(function (err, user) {
-                    if (err) {
-                        res.json({ error: 'Unable to register as host. Please try again.' });
-                    } else {
-                        res.json({ user: user });
-                    }
-                })
+                if(user.userLevel != false){
+                    user.userLevel = true;
+                    user.save(function (err, user) {
+                        if (err) {
+                            res.json({ error: 'Unable to register as host. Please try again.' });
+                        } else {
+                            res.json({ user: user });
+                        }
+                    })
+                } else {
+                    res.json({ user: user });
+                }
             }
         });
     },

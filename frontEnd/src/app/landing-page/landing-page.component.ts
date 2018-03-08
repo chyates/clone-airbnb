@@ -21,11 +21,12 @@ export class LandingPageComponent implements OnInit {
     // this.getRecentListings();
   }
 
-  loggedIn;
-  currentUser;
+  recentListings;
+
   user = new User();
+  regEmailError: string;
+  
   logUser = new LogUser();
-  recentListings; 
   emailError: string;
   passError: string;
 
@@ -33,8 +34,6 @@ export class LandingPageComponent implements OnInit {
     return this._localService.loginUser(this.logUser)
       .then(data => {
         if (data.loggedIn === true) {
-          this.currentUser = data.user;
-          this.loggedIn = true;
           this._router.navigateByUrl('listings');
         }
         if (data.emailError) {
@@ -50,9 +49,10 @@ export class LandingPageComponent implements OnInit {
     this._localService.registerUser(this.user)
       .then(data => {
         if (data.loggedIn === true) {
-          this.currentUser = data.user;
-          this.loggedIn = true;
           this._router.navigateByUrl('listings');
+        }
+        if(data.regEmailError){
+          this.regEmailError = data.regEmailError;
         }
       }).catch(err => console.log(err));
   }

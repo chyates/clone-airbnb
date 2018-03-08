@@ -4,27 +4,28 @@ var User = mongoose.model('User');
 
 module.exports = {
     create: function(req, res) {
+        console.log("Req.body:", req.body);
         User.findById({_id: req.session.user._id}, function(err, user){
-            var newListing = new Listing({
+            var listing = new Listing({
                 title: req.body.title,
                 description: req.body.description,
                 roomType: req.body.roomType,
                 price: req.body.price,
                 amountBeds: req.body.amountBeds,
-                location: req.body.location,
                 bookStatus: false,
-                image: req.body.image
+                image: req.body.image,
+                _location: req.body.location
             });
-            newListing._host = user._id;
-            newListing.conversations = [];
-            newListing.reservations = [];
-            newListing.reviews = [];
-            user.listings.push(newListing);
+            listing._host = user._id;
+            listing.conversations = [];
+            listing.reservations = [];
+            listing.reviews = [];
+            user.listings.push(listing);
             user.save(function (err){
                 if (err) {
                     res.json({ error: err });
                 } else {
-                    newListing.save(function(err, listings){
+                    listing.save(function(err, listings){
                         if (err){
                             res.json({ error: err });
                         } else {

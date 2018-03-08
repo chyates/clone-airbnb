@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|PT+Sans|Work+Sans');
+
 /* modals CSS */
 #regContainer, #logContainer{
     padding: 2%;
@@ -13,8 +15,21 @@
     font-size: 24px;
 }
 
+.modal-header {
+    font-family: 'Work Sans', sans-serif;
+}
+
 #register-form {
     margin: 0px;
+}
+
+#register-form input, #login-form input, .modal-content {
+    border-radius: 0;
+}
+
+#reg-close, #log-close {
+    width: 30px;
+    height: 30px;
 }
 
 #login-form label, #register-form label {
@@ -126,6 +141,14 @@ hr {
 #recent-listings-container{
     margin-left: 1rem;
     background: var(--white);
+}
+
+#recent-listings-container h2 {
+    font-family: 'Work Sans', sans-serif;
+}
+
+#recent-listings-container p {
+    font-family: 'PT Sans', sans-serif;
 }
 
 #search-field {

@@ -18,9 +18,9 @@
       </div>
       <div class="col-3">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" [routerLink]="['/host']">Become a Host</a>
-          <a class="nav-item nav-link" [routerLink]="['/listings']">Listings</a>
-          <a class="nav-item nav-link">Logout</a>
+          <a class="nav-link" [routerLink]="['/host']">Become a Host</a>
+          <a class="nav-link" [routerLink]="['/listings']">Listings</a>
+          <a class="nav-link" [routerLink]="" (click)="logout()">Logout</a>
         </div>
       </div>
     </div>
@@ -32,18 +32,10 @@
       <div class="col-3">
         <nav id="inside-nav" class="navbar navbar-toggleable navbar-light">
           <ul class="nav flex-column">
-            <li class="nav-item">
-              <a [routerLink]="" (click)="switchProfile()" id="toggle-profile">Profile Settings</a>
-            </li>
-            <li class="nav-item">
-              <a [routerLink]="" (click)="switchListing()" id="toggle-listings">Your Listings</a>
-            </li>
-            <li class="nav-item">
-              <a [routerLink]="" (click)="switchMessages()" id="toggle-messages">Your Messages</a>
-            </li>
-            <li class="nav-item">
-              <a [routerLink]="" (click)="switchReserves()" id="toggle-reserves">Your Reservations</a>
-            </li>
+              <a class="nav-item nav-link" [routerLink]="" (click)="switchProfile()" id="toggle-profile">Profile Settings</a>
+              <a class="nav-item nav-link" [routerLink]="" (click)="switchListing()" id="toggle-listings">Your Listings</a>
+              <a class="nav-item nav-link" [routerLink]="" (click)="switchMessages()" id="toggle-messages">Your Messages</a>
+              <a class="nav-item nav-link" [routerLink]="" (click)="switchReserves()" id="toggle-reserves">Your Reservations</a>
           </ul>
         </nav>
         <a>
@@ -58,51 +50,3 @@
       </div>
     </div>
   </div>
-
-  <!-- 
-</div>
-
-<div *ngIf="listingDiv === true" class="form-edit">
-<h3>Listings You've Posted</h3>
-<hr>
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Location</th>
-      <th>Reservations</th>
-      <th>Reviews</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of listings">
-      <td>{{ item.title }}</td>
-      <td>{{ item.location }}</td>
-      <td>{{ item.reservations }}</td>
-      <td>{{ item.reviews }}</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<div *ngIf="trips === true" class="form-edit">
-<h3>Trips You've Booked</h3>
-<hr>
-<table class="table table-responsive">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Number of Guests</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of reservations">
-        <td>{{ item._listing.title }}</td>
-        <td>{{ item.startDate | date: 'mediumDate' }}</td>
-        <td>{{ item.endDate | date: 'mediumDate' }}</td>
-        <td>{{ item.amtGuests }}</td>
-      </tr>
-    </tbody>
-  </table> -->

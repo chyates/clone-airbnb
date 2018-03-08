@@ -117,6 +117,7 @@ module.exports = function (app) {
 
     // Listings
     app.post('/api/listings/create', function(req, res){
+        console.log("Hit create listings route");
         listings.create(req, res);
     })
 

@@ -1,11 +1,11 @@
 **ALSO SHOULD BE MIRRORED IN SERVICE**
 
---Users:
-    + Register/login
-    + Get current (check session)
-    + Update info
-    + Register as host
-    + Logout
+--Users:                          --DONE--
+    + Register/login                Y / Y
+    + Get current (check session)   Y
+    + Update info                   Y
+    + Register as host              Y
+    + Logout                        Y
 
 --Conversations:
     + Create-->as host or guest
@@ -13,7 +13,7 @@
     + Delete
 
 --Listings:
-    + Create-->only as host
+    + Create-->only as host         Y
     + Show all
     + Find one
     + Find all user
@@ -23,8 +23,8 @@
     + Delete 
 
 --Locations:
-    + Create-->only as host
-    + Find last created (for listing creation purposes)
+    + Create-->only as host                             Y
+    + Find last created (for listing creation purposes) Y
     + Search
     + Find listings by location
 

@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
     password: { type: String },
     userLevel: { type: Boolean },
     zipCode: { type: String },
+    phoneNumber: { type: String },
     conversations: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
     reservations: [{ type: Schema.Types.ObjectId, ref: 'Reservation' }],
     listings: [{ type: Schema.Types.ObjectId, ref: 'Listing' }],

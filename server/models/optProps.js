@@ -3,7 +3,6 @@ var Schema = mongoose.Schema;
 
 var PropertySchema = new mongoose.Schema({
     picture: { type: String },
-    phoneNumber: { type: String },
     hometown: { type: String },
     bio: { type: String },
     _user: { type: Schema.Types.ObjectId, ref: 'User' }

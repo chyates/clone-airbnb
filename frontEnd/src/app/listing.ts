@@ -5,4 +5,5 @@ export class Listing {
     public price: number = null;
     public amountBeds: number = null;
     public image: string = "";
+    public location: string = "";
 }

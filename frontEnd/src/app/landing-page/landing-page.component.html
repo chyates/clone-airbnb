@@ -1,6 +1,6 @@
 <!-- <a [routerLink]="['/listings']">Listings</a> -->
 <!-- <a [routerLink]="['/profile']">Public profile</a> -->
-<a [routerLink]="['/account']">Your account</a>
+<!-- <a [routerLink]="['/account', currentUser._id]">Your account</a> -->
 <!-- <a [routerLink]="['/oneListing']">Individual listing</a> -->
 
 
@@ -12,7 +12,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Sign Up</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true"><img id="reg-close" src="assets/icons8-delete-50.png"></span>
                 </button>
             </div>
             <div id="regContainer" class="container container-fluid">
@@ -32,6 +32,7 @@
                                                 #email="ngModel" 
                                                 placeholder="Email address">
                                                 <span class="text-info" *ngIf='!email.valid && email.touched'>Email is required and must be at least 2 characters</span>
+                                                <span class="text-info" *ngIf='regEmailError'>{{ regEmailError }}</span>
                                             </div>
 
                                             <div class="form-group">
@@ -64,25 +65,24 @@
                                                 minlength="8" 
                                                 [(ngModel)]="user.password" 
                                                 #password="ngModel"
-                                                placeholder="Choose a password">
-                                                <span class="text-info" *ngIf='!password.valid && password.touched'>Password is required and must be at least 2 characters</span>
+                                                placeholder="Create a password">
+                                                <span class="text-info" *ngIf='!password.valid && password.touched'>Password is required and must be at least 8 characters</span>
                                             </div>
 
                                             <div class="form-group">
                                                 <input class="form-control" type="password" 
                                                 name="confirmPassword" 
                                                 required 
-                                                minlength="2" 
                                                 [(ngModel)]="user.confirmPassword"
                                                 #confirmPassword="ngModel" placeholder="Verify password">
-                                                <span class="text-info" *ngIf='!confirmPassword.valid && confirmPassword.touched'>Password is required and must be at least 8 characters</span>
-                                                <span class="text-info" *ngIf='confirmPassword != password && confirmPassword.touched'>Passwords must match</span>
+                                                <span class="text-info" *ngIf='!confirmPassword.valid && confirmPassword.touched'>You must verify your password</span>
+                                                <span class="text-info" *ngIf='user.confirmPassword !== user.password'>Passwords must match</span>
                                             </div>
 
                                             <div class="form-group">
                                                 <div>
                                                     <input class="form-control" type="submit" name="register-submit" id="register-submit" tabindex="8" class="form-control btn btn-register"
-                                                        value="Sign Up">
+                                                        [disabled]="!regForm.valid" value="Sign Up">
                                                 </div>
                                             </div>
                                         </form>
@@ -104,7 +104,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Log in to continue</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true"><img id="log-close" src="assets/icons8-delete-50.png"></span>
                 </button>
             </div>
             <div id="logContainer" class="container container-fluid">
@@ -126,7 +126,6 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="password" class="col-form-label">Password: </label>
                                                 <input class="form-control" type="password" 
                                                 name="password" 
                                                 required 
