@@ -32,13 +32,13 @@ export class ListingInfoComponent implements OnInit {
   thisListing = new Listing();
   hostId;
   
-  currentUser;
+  currentUser = new User();
   
   reservation = new Reservation();
   
   review =  new Review();
   addReview = false;
-  allReviews;
+  allReviews = [];
 
   currentListing(id){
     this._localService.findOneListing(id)
@@ -46,7 +46,7 @@ export class ListingInfoComponent implements OnInit {
       // this.hostId = data.listing._host;
       {
         this.thisListing = data.listing
-        console.log(this.thisListing);
+        // console.log(this.thisListing);
         this.allReviews = data.listing.reviews})
       // this.listingId = data.listing._id });
       // console.log("current listing:", this.thisListing);
@@ -58,7 +58,7 @@ export class ListingInfoComponent implements OnInit {
       if (data === {}) {
         console.log("No current user");
       } else {
-        console.log("Current user:", data.user);
+        // console.log("Current user:", data.user);
         this.currentUser = data.user;
       }
     })
@@ -81,5 +81,10 @@ export class ListingInfoComponent implements OnInit {
   getAllReviews(listingId){
     this._localService.findAllReviews(this.listingId)
     .then(data => this.allReviews = data.reviews);
+  }
+
+  logout() {
+    this._localService.logoutUser()
+    .then(data => this._router.navigateByUrl('/'));
   }
 }

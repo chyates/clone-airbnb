@@ -97,6 +97,7 @@ export class LocalApiService {
   }
 
   findRecentList() {
+    console.log("Hit service, recent listings:listings");
     return this._http.get('/api/listings/listings/recent')
       .map(response => response.json())
       .toPromise();

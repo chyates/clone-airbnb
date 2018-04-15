@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: LandingPageComponent  },
   { path: 'homes', component: LandingPageComponent },
   { path: 'listings', component: ListingComponent },
-  { path: 'oneListing', component: ListingInfoComponent },
+  { path: 'listings/:id', component: ListingInfoComponent },
   { path: 'account/:id', component: UserDashComponent },
   { path: 'host', component: HostComponent },
   { path: 'profile', component: PublicProfileComponent }

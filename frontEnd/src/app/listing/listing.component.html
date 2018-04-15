@@ -25,30 +25,29 @@
       </div>
     </div>
   </nav>
-  <hr>
+</div>
+
+<hr>
   
-  <div id="listing-container">
-    <div class="row">
-      <h2>Most recent listings</h2>
-    </div>
-    <div class="home-row row">
-      <div id="recent-listings" class="col-md" *ngFor="let l of recentListings">
-        <img class="img img-fluid img-thumbnail" id="recent-result-image" src="{{ l.image }}">
-        <h4><a [routerLink]="[l._id]">{{ l.title }}</a></h4>
-        <li>{{ l.price | currency:'USD':true }}</li>
-        <li>{{ l.roomType }}</li>
+<div id="listing-container" class="container-fluid">
+  <div class="col-md-10 mx-auto my-auto">
+    <h2>Most recent listings</h2>
+    <div id="recent-listings" class="col-md-3 card" *ngFor="let l of recentListings">
+      <img class="card-img-top" id="recent-result-image" src="{{ l.image }}">
+      <div class="card-body">
+        <h4 class="card-title"><a [routerLink]="[l._id]">{{ l.title }}</a></h4>
+        <li class="card-text">{{ l.price | currency:'USD':symbol }}</li>
+        <li class="card-text">{{ l.roomType }}</li>
       </div>
     </div>
     <hr>
-    <div class="row">
-      <h2>Search results</h2>
-    </div>
-    <div class="home-row row">
-      <div id="search-results" class="col-md" *ngFor="let result of searchListings">
-        <img class="img img-fluid img-thumbnail" id="search-result-image" src="{{ result.image }}">
-        <h4><a [routerLink]="[result._id]">{{ result.title }}</a></h4>
-        <li>{{ result.price | currency:'USD':t
-        <li>{{ result.roomT
+    <h2>Search results</h2>
+    <div id="search-results" class="col-md-3 card" *ngFor="let result of searchListings">
+      <img class="card-img-top" id="search-result-image" src="{{ result.image }}">
+      <div class="card-body">
+        <h4 class="card-title"><a [routerLink]="[result._id]">{{ result.title }}</a></h4>
+        <li class="card-text">{{ result.price | currency:'USD':symbol }}</li>
+        <li class="card-text">{{ result.roomType }}</li>
       </div>
     </div>
   </div>

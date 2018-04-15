@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 var Listing = mongoose.model('Listing');
+var Location = mongoose.model('Location');
 var User = mongoose.model('User');
 
 module.exports = {
     create: function(req, res) {
-        console.log("Req.body:", req.body);
         User.findById({_id: req.session.user._id}, function(err, user){
             var listing = new Listing({
                 title: req.body.title,
@@ -25,12 +25,22 @@ module.exports = {
                 if (err) {
                     res.json({ error: err });
                 } else {
-                    listing.save(function(err, listings){
-                        if (err){
-                            res.json({ error: err });
-                        } else {
-                            res.json({listings: listings});
-                        }
+                    Location.findById({ _id: listing._location }, function(err, location){
+                        location.listings.push(listing);
+                        location.save(function(err) {
+                            if(err){
+                                console.log("Error in location save");
+                            } else {
+                                listing.save(function(err, listing){
+                                    if (err){
+                                        console.log("Error in listing save");
+                                        res.json({ error: err });
+                                    } else {
+                                        res.json({listing: listing});
+                                    }
+                                });
+                            }
+                        });
                     });
                 }
             });
@@ -60,6 +70,7 @@ module.exports = {
     findOne: function(req, res){
         Listing.findById({_id: req.params.id})
         .populate('reviews')
+        .populate('_location')
         .exec(function (err, listing){
             if (err){
                 res.json({ error: err });
@@ -105,8 +116,6 @@ module.exports = {
     },
 
     findRecentLanding: function(req, res){
-        // console.log("Hit recent landing controller")
-        // console.log(req.body)
         Listing.find({}, function (err, listings){
             if (err) {
                 res.json({ error: err });

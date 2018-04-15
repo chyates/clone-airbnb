@@ -18,106 +18,100 @@
       </div>
       <div class="col-3">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" [routerLink]="['/account', currentUser._id]">Your Account</a>
+          <a class="nav-item nav-link" [routerLink]="['/account', currentUser._id]">{{ currentUser.firstName }}'s Account</a>
           <a class="nav-item nav-link" [routerLink]="['/listings']">Listings</a>
-          <a class="nav-item nav-link">Logout</a>
+          <a class="nav-item nav-link" (click)="logout()">Logout</a>
         </div>
       </div>
     </div>
   </nav>
   <hr>
-</div>
+</div><!-- end nav container -->
 
-<img id="test-img" class="img-fluid" src="assets/testHouse2.jpg">
 <div id="listing-info-container" class="container container-fluid">
-  <div id="main-info" class="row">
+  <!-- <img id="test-img" class="img-fluid" src="{{ thisListing.image }}"> -->
+
+  <div id="main-info" class="row no-gutters">
+
     <div id="main-content-listing" class="col-md-8">
-      <div class="row">
+
+      <div class="row no-gutters">
         <div class="col-sm-8">
-          <div class="row">
-            <h2>Beach House</h2>
+          <div class="row no-gutters">
+            <h2>{{ thisListing.title }}</h2>
           </div>
-          <div class="row">
+
+          <div class="row no-gutters">
             <i class="fas fa-users"></i><div class="font-weight-light"> Guests </div><i class="fas fa-bed"></i><div class="font-weight-light"> Beds </div><i class="fas fa-home"></i><div class="font-weight-light"> Rooms </div><i class="fas fa-bath"></i><div class="font-weight-light"> Baths </div>
           </div>
+
         </div>
+
         <div class="col-sm-4">
-          <img id="title-col-img" class="img-fluid" src="assets/blankUser.png">
+          <img id="title-col-img" class="img-fluid" src="{{ thisListing.image }}"/>
         </div>
-      </div>
-      <div class="row">
-        <p>Beautiful beach house in Southern California</p>
-      </div>
-      <div class="row">
-        <div id="review-div" class="col-sm-3">
-          <h3>8 reviews:</h3>
-        </div>
-        <div class="col-sm-2 offset-sm-5">
-          <form class="form-inline">
-            <input type="text" class="form-control" name="search" placeholder="Search reviews">
-            <button id="listing-search-submit" type="submit" class="btn btn-primary-outline">Search</button>
-          </form>
-        </div>
-      </div>
+
+      </div><!-- end listing header row -->
+
+      <!-- <div class="row no-gutters">
+        <p>{{ thisListing.description }}</p>
+      </div> -->
+
       <hr>
-      <div class="row">
+
+      <div class="row no-gutters">
+
         <div class="col-sm-1">
           <img id="review-user-img" class="img-fluid" src="assets/blankUser.png">
         </div>
+
         <div class="col-sm-11">
-          <div class="row">
+
+          <div class="row no-gutters">
             <h6>Review leaver</h6>
           </div>
-          <div class="row">
+
+          <div class="row no-gutters">
             <p>Date left</p>
           </div>
-        </div>
-      </div>
-      <div class="row">
+
+        </div><!-- end review leaver info col-11 -->
+
+      </div><!-- end listing review row -->
+
+      <div class="row no-gutters">
         <p>Boy, this sure was a great place to stay</p>
       </div>
-      <div class="row">
-        <p>Boy, this sure was a great place to stay</p>
-      </div>
-      <div class="row">
-        <p>Boy, this sure was a great place to stay</p>
-      </div>
-      <div class="row">
-        <p>Boy, this sure was a great place to stay</p>
-      </div>
-      <div class="row">
-        <p>Boy, this sure was a great place to stay</p>
-      </div>
-      <div class="row">
-        <p>Boy, this sure was a great place to stay</p>
-      </div>
-      <div class="row">
-        <p>Boy, this sure was a great place to stay</p>
-      </div>
-      <div class="row">
-        <p>Boy, this sure was a great place to stay</p>
-      </div>
-      <div class="row">
+
+      <div class="row no-gutters">
         <h3>Location: </h3>
       </div>
-      <div class="row">
-        <p>Southern California</p>
-      </div>
-    </div>
+
+      <!-- <div class="row no-gutters">
+        <p>{{ thisListing._location._id }} {{ thisListing._location._id }}</p>
+      </div> -->
+
+    </div><!-- end main content listing -->
+
     <div id="listings-instant-book" class="col-md-4">
+
       <div id="instant-book-form" class="container">
-        <h3>$99 <span class="font-weight-light">per night</span></h3>
+
+        <h3>{{ thisListing.price | currency:'USD':symbol }}<span class="font-weight-light">per night</span></h3>
+
         <hr>
+      
         <form #reserveForm="ngForm" (submit)="bookTrip()">
           <label>Dates</label>
-          <div id="check-in-out" class="row">
+
+          <div id="check-in-out" class="row no-gutters">
             <input type="date" class="col-sm-6 form-control" name="startDate" required [(ngModel)]="reservation.startDate" #startDate="ngModel"
             placeholder="Check in">
             <input type="date" class="col-sm-6 form-control" name="endDate" required [(ngModel)]="reservation.endDate" #endDate="ngModel" placeholder="Check out">
           </div>
           
           <label for="guests">Guests</label>
-          <div id="guest-select" class="row">
+          <div id="guest-select" class="row no-gutters">
             <select id="guest-number" class="form-control" name="amtGuests" required [(ngModel)]="reservation.amtGuests" #amtGuests="ngModel">
               <option value="1">1 guest</option>
               <option value="2">2 guests</option>
@@ -125,29 +119,45 @@
               <option value="4">4 guests</option>
             </select>
           </div>
-          <div class="row">
+
+          <div class="row no-gutters">
             <input id="form-submit" type="submit" class="btn btn-primary btn-lg btn-block" value="Book">
           </div>
+
         </form>
-      </div>
-    </div>
-  </div>
+
+      </div><!-- end reservation book col-md-4 -->
+
+    </div><!-- end listing instant book -->
+
+  </div><!-- end listing main info -->
+
   <div id="footer" class="jumbotron bg-light text-black mt-4">
+
     <div class="container-fluid py-4">
-      <div class="row">
+
+      <div class="row no-gutters">
+
         <div class="col-md-3">
           <a href="#/about">About Us</a>
         </div>
+
         <div class="col-md-3">
           <a href="#/careers">Careers</a>
         </div>
+
         <div class="col-md-3">
           <a href="#/policies">Policies</a>
         </div>
+
         <div class="col-md-3">
           <a href="#/help">Help</a>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+      </div><!-- end footer row -->
+
+    </div><!-- end footer container -->
+
+  </div><!-- end footer jumbotron-->
+
+</div><!-- end listing container -->
